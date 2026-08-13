@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Serumpun Brothers</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: #222; 
+    /*
+    url("img/gallery1.jpg")center center / cover no-repeat fixed;
+    */
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   JUDUL
+========================= */
+
+h1 {
+    margin: 0 0 20px;
+
+    font-size: 42px;
+
+    text-align: center;
+}
+
+.page,
+#intro {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 20px;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0s linear 0.5s;
+}
+
+.page.active,
+#intro.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+        opacity 0.5s ease;
+}
+
+/* =========================
+   CAROUSEL
+========================= */
+
+.character-container {
+    width: 100%;
+    max-width: 1200px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 110px calc(50% - 90px) 40px;
+
+    scroll-behavior: auto;
+
+    scrollbar-width: none;
+
+    flex-shrink: 0;
+}
+
+.character-container::-webkit-scrollbar {
+    display: none;
+}
+
+.character {
+    will-change: transform, opacity;
+}
+
+.character.active {
+    transform: scale(1.15);
+
+    opacity: 1;
+
+    border-color: white;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.3);
+}
+
+/* =========================
+   KARTU
+========================= */
+
+.character {
+    position: relative;
+
+    flex: 0 0 180px;
+    height: 280px;
+
+    scroll-snap-align: center;
+
+    opacity: 0.4;
+    transform: scale(0.75);
+
+    transition:
+    transform 0.30s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.30s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.30s ease,
+    box-shadow 0.30s ease;
+
+    border: 2px solid #444;
+    border-radius: 20px;
+
+    overflow: visible;
+}
+
+.galerx {
+    flex: 0 0 300px;
+    height: 200px;
+}
+
+/* =========================
+   AREA PNG
+========================= */
+
+.character-image {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+
+    background: transparent;
+
+    border-radius: 20px 20px 0 0;
+
+    clip-path: inset(
+        -150px
+        -150px
+        0
+        -150px
+    );
+
+    overflow: visible;
+
+    z-index: 2;
+}
+.character-bck {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+
+    overflow: hidden;
+
+    border-radius: 18px 18px 0 0;
+
+    z-index: 1;
+}
+.character-bg {
+    position: absolute;
+
+    inset: 0px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* =========================
+   PNG KARAKTER
+========================= */
+
+.character-image img {
+    position: absolute;
+
+    width: 260px;
+    height: 360px;
+
+    max-width: none;
+
+    object-fit: contain;
+
+    left: 50%;
+    bottom: -100px;
+
+    transform: translateX(-50%);
+
+    display: block;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   NAMA KARAKTER
+========================= */
+
+.character-name {
+    position: absolute;
+
+    left: -2px;
+    right: -2px;
+
+    bottom: -2px;
+
+    height: 62px;
+
+    background: #222;
+
+    border: 2px solid #444;
+
+    border-radius: 0 0 20px 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    z-index: 50;
+}
+
+/* =========================
+   KARAKTER AKTIF
+========================= */
+
+.character.active {
+    transform: scale(1.15);
+
+    opacity: 1;
+
+    border-color: white;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.3);
+}
+
+.character.active .character-name {
+    border-color: white;
+}
+
+
+/* =========================
+   INFORMASI
+========================= */
+
+.character-info {
+    width: 90%;
+
+    max-width: 600px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    animation: fadeInfo 0.35s ease;
+}
+
+.role {
+    margin-top: 5px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.description {
+    margin-top: 12px;
+
+    color: #ccc;
+
+    line-height: 1.5;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.stats {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 15px;
+}
+
+.stat {
+    min-width: 60px;
+}
+
+.stat-title {
+    display: block;
+
+    font-size: 11px;
+
+    color: #888;
+}
+
+.stat-value {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   TOMBOL
+========================= */
+
+button {
+    margin-top: 20px;
+
+    padding: 12px 35px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: white;
+
+    color: black;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+    
+    transition:
+        transform 0.08s ease,
+        box-shadow 0.08s ease;
+
+    box-shadow:
+        0 5px 0 #999;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(4px) scale(0.96);
+
+    box-shadow:
+        0 1px 0 #999;
+}
+
+.menu-button {
+    width: 200px;
+}
+
+/* =========================
+   ANIMASI
+========================= */
+
+@keyframes fadeInfo {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =========================
+   HILANGKAN GLITCH / FLASH BIRU
+========================= */
+
+button,
+.character {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+button:focus,
+button:active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* =========================
+   OVERLAY SEJARAH
+========================= */
+
+.story-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    animation: storyFade 0.4s ease;
+}
+
+
+/* =========================
+   TEKS SEJARAH
+========================= */
+
+.story-panel {
+    width: 100%;
+    max-width: 550px;
+
+    background: transparent;
+
+    border: none;
+    box-shadow: none;
+
+    padding: 20px;
+
+    text-align: center;
+
+    overflow: visible;
+
+    animation: storyEnter 0.5s ease;
+}
+
+
+/* =========================
+   HAPUS GAMBAR
+========================= */
+
+.story-character {
+    display: none;
+}
+
+
+/* =========================
+   NAMA
+========================= */
+
+.story-name {
+    font-size: 36px;
+
+    font-weight: bold;
+
+    color: white;
+}
+
+
+/* =========================
+   ROLE
+========================= */
+
+.story-role {
+    margin-top: 5px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: white;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   JUDUL
+========================= */
+
+.story-title {
+    margin-top: 30px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: white;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   TEKS SEJARAH
+========================= */
+
+.story-text {
+    margin-top: 15px;
+
+    color: rgba(255,255,255,0.9);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    text-align: center;
+}
+
+
+/* =========================
+   TOMBOL
+========================= */
+
+.story-close {
+    margin-top: 30px;
+
+    padding: 10px 28px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #111;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================
+   ANIMASI
+========================= */
+
+@keyframes storyFade {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes storyFadeOut {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+@keyframes storyEnter {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+/*loading*/
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    background: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#loader.hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
+}
+
+#loadingDots {
+    width: 60px;
+    text-align: left;
+}
+.menu-content {
+    width: 90%;
+    max-width: 600px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 25px;
+
+    animation: menuEnter 0.5s ease;
+}
+
+.menu-content h1 {
+    margin: 0 0 15px;
+}
+
+.menu-content p {
+    margin: 0;
+
+    color: white;
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+@keyframes menuEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+.gallery-container {
+    width: 100%;
+    max-width: 1000px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 30px 20px;
+
+    scrollbar-width: none;
+}
+
+.gallery-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+.gallery-card {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 3 / 2;
+
+    border: 2px solid #444;
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    user-select: none;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+.gallery-card:focus,
+.gallery-card:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-card:hover {
+    transform: scale(1.03);
+    border-color: white;
+}
+
+.gallery-image {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+}
+
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.gallery-title {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 55px;
+
+    background: rgba(20,20,20,0.9);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    z-index: 2;
+}
+.gallery-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    animation: storyFade 0.4s ease;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background: rgba(0,0,0,0.35);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+
+.gallery-panel {
+    width: 100%;
+    max-width: 550px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+
+.gallery-detail-title {
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: white;
+}
+
+
+.gallery-detail-text {
+    margin-top: 20px;
+
+    color: rgba(255,255,255,0.9);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+
+    #galeri {
+        display: block;
+        overflow-y: auto;
+        padding: 25px 15px;
+    }
+
+    #galeri h1 {
+        margin-bottom: 20px;
+    }
+
+    #galeri .gallery-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        width: 100%;
+        height: auto;
+        max-height: none;
+
+        overflow: visible;
+
+        padding: 0 0 20px;
+    }
+
+    #galeri .gallery-card {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+
+        min-height: 0;
+    }
+
+    #galeri > button {
+        display: block;
+        margin: 20px auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+    <div id="loadingDots">.</div>
+</div>
+
+    <!-- INTRO -->
+    <section id="intro" class="active">
+        <h1>SERUMPUN BROTHERS</h1>
+        <button onclick="showPage('home')">MULAI</button>
+    </section>
+
+
+    <!-- HOME -->
+    <section id="home" class="page">
+        <img src="img/logo.webp" alt="" width="200px" height="200px">
+
+        <button class="menu-button" onclick="showPage('event')">
+            EVENT
+        </button>
+
+        <button class="menu-button" onclick="showPage('galeri')">
+            GALERI
+        </button>
+
+        <button class="menu-button" onclick="showPage('karakter')">
+            KARAKTER
+        </button>
+
+        <button class="menu-button" onclick="showPage('lain')">
+            LAIN-LAIN
+        </button>
+    </section>
+
+
+    <!-- EVENT -->
+    <section id="event" class="page">
+
+        <div class="menu-content">
+        <h1>EVENT</h1>
+            <p>
+            Berbagai event dan kegiatan yang pernah
+            dilakukan oleh Serumpun Brothers.
+        </p>
+        <!-- isi event -->
+
+        <button onclick="showPage('home')">
+            KEMBALI
+        </button>
+    </div>
+    </section>
+
+
+    <!-- GALERI -->
+    <section id="galeri" class="page">
+        <h1>GALERI</h1>
+        <div class="gallery-container">
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Pertama"
+        data-description="Ini adalah deskripsi untuk momen pertama."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery1.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Pertama
+        </div>
+
+    </div>
+
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Kedua"
+        data-description="Ini adalah deskripsi untuk momen kedua."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery2.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Kedua
+        </div>
+
+    </div>
+
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Ketiga"
+        data-description="Ini adalah deskripsi untuk momen ketiga."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery3.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Ketiga
+        </div>
+
+    </div>
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Pertama"
+        data-description="Ini adalah deskripsi untuk momen pertama."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery1.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Pertama
+        </div>
+
+    </div>
+
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Kedua"
+        data-description="Ini adalah deskripsi untuk momen kedua."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery2.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Kedua
+        </div>
+
+    </div>
+
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Ketiga"
+        data-description="Ini adalah deskripsi untuk momen ketiga."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery3.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Ketiga
+        </div>
+
+    </div>
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Pertama"
+        data-description="Ini adalah deskripsi untuk momen pertama."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery1.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Pertama
+        </div>
+
+    </div>
+
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Kedua"
+        data-description="Ini adalah deskripsi untuk momen kedua."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery2.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Kedua
+        </div>
+
+    </div>
+
+
+    <div
+        class="gallery-card"
+        onclick="bukaGaleri(this)"
+        data-title="Momen Ketiga"
+        data-description="Ini adalah deskripsi untuk momen ketiga."
+    >
+
+        <div class="gallery-image">
+            <img src="img/gallery3.jpg">
+        </div>
+
+        <div class="gallery-title">
+            Momen Ketiga
+        </div>
+
+    </div>    
+
+</div>
+<div
+    class="gallery-overlay"
+    id="galleryOverlay"
+>
+
+    <div class="gallery-panel">
+
+        <div
+            class="gallery-detail-title"
+            id="galleryDetailTitle"
+        >
+        </div>
+
+        <div
+            class="gallery-detail-text"
+            id="galleryDetailText"
+        >
+        </div>
+
+        <button
+            class="gallery-close"
+            onclick="tutupGaleri()"
+        >
+            KEMBALI
+        </button>
+
+    </div>
+
+</div>
+        <!-- isi galeri -->
+
+        <button onclick="showPage('home')">
+            KEMBALI
+        </button>
+    </section>
+
+
+    <!-- KARAKTER -->
+    <section id="karakter" class="page">
+    
+    <h1>Pilih Karakter</h1>
+
+
+<div
+    class="character-container"
+    id="characters"
+>
+
+
+    <!-- WARRIOR 111-->
+
+    <div
+        class="character active"
+
+        data-name="Warrior"
+        data-role="Fighter"
+        data-description="Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar."
+        data-hp="95"
+        data-atk="85"
+        data-def="90"
+        >
+        
+        <div class="character-bck">
+
+        <div
+        class="character-bg"
+        style="background-image:url('img/oman.webp');">
+        </div>
+
+        </div>
+        <div class="character-image">
+
+            <img src="img/oman.webp">
+
+        </div>
+
+        <div class="character-name">
+            Oman
+        </div>
+
+    </div>
+
+
+
+    <!-- RIZQON -->
+
+    <div
+        class="character"
+
+        data-name="Warrior"
+        data-role="Fighter"
+        data-description="Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar."
+        data-hp="95"
+        data-atk="85"
+        data-def="90"
+        >
+        
+        <div class="character-bck">
+
+        <div
+        class="character-bg"
+        style="background-image:url('bg1.jpg');">
+        </div>
+
+        </div>
+        <div class="character-image">
+
+            <img src="img/rizqon.png">
+
+        </div>
+
+        <div class="character-name">
+            Warrior
+        </div>
+
+    </div>
+
+
+    <!-- ARCHER -->
+
+    <div
+        class="character"
+
+        data-name="Archer"
+        data-role="Ranged"
+        data-description="Pemanah cepat yang mampu menyerang musuh dari jarak jauh."
+        data-hp="70"
+        data-atk="88"
+        data-def="55"
+    >
+
+        <div class="character-bck">
+
+        <div
+        class="character-bg"
+        style="background-image:url('bg1.jpg');">
+        </div>
+
+        </div>
+        <div class="character-image">
+
+            <img src="img/rizqon.png">
+
+        </div>
+
+        <div class="character-name">
+            Archer
+        </div>
+
+    </div>
+
+
+    <!-- ASSASSIN -->
+
+    <div
+        class="character"
+
+        data-name="Assassin"
+        data-role="Assassin"
+        data-description="Karakter cepat dengan serangan kritis mematikan dan mobilitas tinggi."
+        data-hp="65"
+        data-atk="100"
+        data-def="40"
+    >
+
+        <div class="character-bck">
+
+        <div
+        class="character-bg"
+        style="background-image:url('bg1.jpg');">
+        </div>
+
+        </div>
+        <div class="character-image">
+
+            <img src="img/rizqon.png">
+
+        </div>
+
+        <div class="character-name">
+            Assassin
+        </div>
+
+    </div>
+
+
+    <!-- TANK -->
+
+    <div
+        class="character"
+
+        data-name="Tank"
+        data-role="Defender"
+        data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
+        data-hp="100"
+        data-atk="60"
+        data-def="100"
+        data-story="Rizqon adalah seorang petarung yang tumbuh dari lingkungan keras. Ia belajar bahwa kekuatan bukan hanya tentang seberapa kuat seseorang menyerang, tetapi juga tentang keberanian untuk melindungi orang-orang yang berharga baginya."
+    >
+
+        <div class="character-bck">
+
+        <div
+        class="character-bg"
+        style="background-image:url('bg1.jpg');">
+        </div>
+
+        </div>
+        <div class="character-image">
+
+            <img src="img/rizqon.png">
+
+        </div>
+
+        <div class="character-name">
+            T
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     INFORMASI KARAKTER
+========================= -->
+
+<div
+    class="character-info"
+    id="characterInfo"
+>
+
+    <div
+        class="role"
+        id="role"
+    >
+        Fighter
+    </div>
+
+
+    <div
+        class="description"
+        id="description"
+    >
+        Petarung jarak dekat dengan pertahanan kuat
+        dan serangan fisik yang besar.
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <span class="stat-title">
+                HP
+            </span>
+
+            <span
+                class="stat-value"
+                id="hp"
+            >
+                95
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-title">
+                ATK
+            </span>
+
+            <span
+                class="stat-value"
+                id="atk"
+            >
+                85
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-title">
+                DEF
+            </span>
+
+            <span
+                class="stat-value"
+                id="def"
+            >
+                90
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<button onclick="pilihKarakter()">
+    PILIH KARAKTER
+</button>
+<button onclick="showPage('home')">
+            KEMBALI
+        </button>
+        <!-- pemilihan karakter kamu
+             dimasukkan di sini -->
+
+    </section>
+
+
+    <!-- LAIN-LAIN -->
+    <section id="lain" class="page">
+        <div class="menu-content">
+        <h1>LAIN-LAIN</h1>
+            <p>
+            Berbagai event dan kegiatan yang pernah
+            dilakukan oleh Serumpun Brothers.
+        </p>
+        <!-- isi event -->
+
+        <button onclick="showPage('home')">
+            KEMBALI
+        </button>
+    </div>
+    </section>
+
+
+<!-- =========================
+     SEJARAH KARAKTER
+========================= -->
+
+<div
+    class="story-overlay"
+    id="storyOverlay"
+>
+
+    <div class="story-panel">
+
+        <div
+            class="story-name"
+            id="storyName"
+        >
+            Rizqon
+        </div>
+
+        <div
+            class="story-role"
+            id="storyRole"
+        >
+            FIGHTER
+        </div>
+
+        <div class="story-title">
+            SEJARAH KARAKTER
+        </div>
+
+        <div
+            class="story-text"
+            id="storyText"
+        >
+        </div>
+
+        <button class="active story-close"
+            onclick="tutupSejarah()"
+        >
+            KEMBALI
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+function bukaGaleri(card) {
+
+    document.getElementById(
+        "galleryDetailTitle"
+    ).textContent =
+        card.dataset.title;
+
+    document.getElementById(
+        "galleryDetailText"
+    ).textContent =
+        card.dataset.description;
+
+    document.getElementById(
+        "galleryOverlay"
+    ).style.display =
+        "flex";
+}
+
+
+function tutupGaleri() {
+
+    const gallery =
+        document.getElementById("galleryOverlay");
+
+    gallery.style.animation =
+        "storyFadeOut 0.4s ease";
+
+    setTimeout(() => {
+
+        gallery.style.display = "none";
+
+        gallery.style.animation =
+            "storyFade 0.4s ease";
+
+    }, 400);
+}
+function showPage(id) {
+
+    const current =
+        document.querySelector(
+            ".page.active, #intro.active"
+        );
+
+    const next =
+        document.getElementById(id);
+
+    if (!next || current === next) return;
+
+
+    /* FADE OUT */
+
+    if (current) {
+        current.classList.remove("active");
+    }
+
+
+    /* Tunggu fade-out selesai */
+
+    setTimeout(() => {
+
+    next.classList.add("active");
+
+    if (id === "karakter") {
+
+        setTimeout(() => {
+
+            centerCharacter(currentIndex);
+
+        }, 50);
+
+    }
+
+}, 500);
+}
+const container =
+    document.getElementById(
+        "characters"
+    );
+
+const characters =
+    document.querySelectorAll(
+        ".character"
+    );
+
+const roleElement =
+    document.getElementById(
+        "role"
+    );
+
+const descriptionElement =
+    document.getElementById(
+        "description"
+    );
+
+const hpElement =
+    document.getElementById(
+        "hp"
+    );
+
+const atkElement =
+    document.getElementById(
+        "atk"
+    );
+
+const defElement =
+    document.getElementById(
+        "def"
+    );
+
+
+/* =========================
+   UPDATE INFORMASI
+========================= */
+
+function updateInfo(character) {
+
+    roleElement.textContent =
+        character.dataset.role;
+
+    descriptionElement.textContent =
+        character.dataset.description;
+
+    hpElement.textContent =
+        character.dataset.hp;
+
+    atkElement.textContent =
+        character.dataset.atk;
+
+    defElement.textContent =
+        character.dataset.def;
+
+
+    const info =
+        document.getElementById(
+            "characterInfo"
+        );
+
+    info.style.animation = "none";
+
+    info.offsetHeight;
+
+    info.style.animation =
+        "fadeInfo 0.35s ease";
+}
+
+
+/* =========================
+   CARI KARAKTER DI TENGAH
+========================= */
+
+function updateActive() {
+
+    const center =
+        container.scrollLeft +
+        container.clientWidth / 2;
+
+    let closest = null;
+    let distance = Infinity;
+
+    characters.forEach(character => {
+
+        const characterCenter =
+            character.offsetLeft +
+            character.offsetWidth / 2;
+
+        const difference =
+            Math.abs(center - characterCenter);
+
+        if (difference < distance) {
+            distance = difference;
+            closest = character;
+        }
+    });
+
+    if (!closest) return;
+
+    const current =
+        container.querySelector(".character.active");
+
+    if (current === closest) return;
+
+    if (current) {
+        current.classList.remove("active");
+    }
+
+    closest.classList.add("active");
+
+    updateInfo(closest);
+}
+
+
+/* =========================
+   SWIPE
+========================= */
+
+container.addEventListener("scroll", () => {
+    requestAnimationFrame(updateActive);
+});
+
+function centerCharacter(index) {
+
+    if (index < 0) index = 0;
+
+    if (index >= characters.length) {
+        index = characters.length - 1;
+    }
+
+    currentIndex = index;
+
+    const character = characters[index];
+
+    characters.forEach(c => {
+        c.classList.remove("active");
+    });
+
+    character.classList.add("active");
+
+    updateInfo(character);
+
+    requestAnimationFrame(() => {
+
+        const containerRect =
+            container.getBoundingClientRect();
+
+        const characterRect =
+            character.getBoundingClientRect();
+
+        const containerCenter =
+            containerRect.left +
+            containerRect.width / 2;
+
+        const characterCenter =
+            characterRect.left +
+            characterRect.width / 2;
+
+        const move =
+            characterCenter -
+            containerCenter;
+
+        container.scrollTo({
+            left:
+                container.scrollLeft + move,
+            behavior: "smooth"
+        });
+
+    });
+
+}
+
+let currentIndex = 0;
+let wheelBusy = false;
+
+container.addEventListener("wheel", function(e) {
+
+    if (
+        !document
+            .getElementById("karakter")
+            .classList
+            .contains("active")
+    ) {
+        return;
+    }
+
+    if (
+        Math.abs(e.deltaY) <=
+        Math.abs(e.deltaX)
+    ) {
+        return;
+    }
+
+    e.preventDefault();
+
+    if (wheelBusy) return;
+
+    wheelBusy = true;
+
+    if (e.deltaY > 0) {
+        centerCharacter(currentIndex + 1);
+    } else {
+        centerCharacter(currentIndex - 1);
+    }
+
+    setTimeout(() => {
+        wheelBusy = false;
+    }, 250);
+
+}, {
+    passive: false
+});
+/* =========================
+   PILIH
+========================= */
+
+function pilihKarakter() {
+
+    const active =
+        document.querySelector(
+            ".character.active"
+        );
+
+    if (!active) return;
+
+
+    document.getElementById(
+        "storyName"
+    ).textContent =
+        active.dataset.name;
+
+
+    document.getElementById(
+        "storyRole"
+    ).textContent =
+        active.dataset.role;
+
+
+    document.getElementById(
+        "storyText"
+    ).textContent =
+        active.dataset.story ||
+        "Belum ada sejarah karakter.";
+
+
+    document.getElementById(
+        "storyOverlay"
+    ).style.display =
+        "flex";
+}
+
+function tutupSejarah() {
+
+    const story =
+        document.getElementById("storyOverlay");
+
+    story.style.animation =
+        "storyFadeOut 0.4s ease";
+
+    setTimeout(() => {
+
+        story.style.display = "none";
+
+        story.style.animation =
+            "storyFade 0.4s ease";
+
+    }, 400);
+
+}
+
+const dots = document.getElementById("loadingDots");
+
+let dotCount = 1;
+
+const loadingAnimation = setInterval(() => {
+
+    dotCount++;
+
+    if (dotCount > 3) {
+        dotCount = 1;
+    }
+
+    dots.textContent = ".".repeat(dotCount);
+
+}, 400);
+
+
+window.addEventListener("load", () => {
+
+    clearInterval(loadingAnimation);
+
+    setTimeout(() => {
+        document.getElementById("loader")
+            .classList.add("hide");
+    }, 300);
+
+});
+
+</script>
+<audio id="clickSound" src="click.mp3" preload="auto"></audio>
+</body>
+</html>
