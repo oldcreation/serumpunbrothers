@@ -88,14 +88,14 @@ h1 {
     max-width: 1200px;
 
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
 
     display: flex;
     align-items: center;
 
     gap: 25px;
 
-    padding: 110px calc(50% - 90px) 40px;
+    padding: 110px 50% 40px;
 
     scroll-behavior: auto;
 
@@ -103,8 +103,8 @@ h1 {
 
     flex-shrink: 0;
     scroll-snap-type: x mandatory;
-    scroll-padding-left: calc(50% - 90px);
-    scroll-padding-right: calc(50% - 90px);
+    scroll-padding-left: calc(50% - 20%);
+    scroll-padding-right: calc(50% - 20%);
 }
 
 .character-container::-webkit-scrollbar {
@@ -116,7 +116,6 @@ h1 {
 }
 
 .character.active {
-    transform: scale(1.15);
 
     opacity: 1;
 
@@ -225,7 +224,7 @@ h1 {
     left: 50%;
     bottom: -100px;
 
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1.15);
 
     display: block;
 
@@ -274,7 +273,7 @@ h1 {
     transform: scale(1.15);
 
     opacity: 1;
-
+    z-index: 20;
     border-color: white;
 
     box-shadow:
@@ -885,6 +884,7 @@ button:active {
         margin: 20px auto;
     }
 }
+
 </style>
 </head>
 
