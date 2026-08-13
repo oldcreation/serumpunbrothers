@@ -49,7 +49,7 @@ h1 {
 #intro {
     position: fixed;
     inset: 0;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,8 +59,8 @@ h1 {
     visibility: hidden;
     pointer-events: none;
 
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: visible;
+    overflow-x: visible;
 
     padding: 20px;
 
@@ -96,7 +96,7 @@ h1 {
     gap: 25px;
 
     padding: 110px 50% 40px;
-
+    
     scroll-behavior: auto;
 
     scrollbar-width: none;
@@ -120,7 +120,7 @@ h1 {
     opacity: 1;
 
     border-color: white;
-
+    z-index: 10;
     box-shadow:
         0 0 30px rgba(255,255,255,0.3);
 }
@@ -182,7 +182,7 @@ h1 {
 
     overflow: visible;
 
-    z-index: 2;
+    z-index: 10;
 }
 .character-bck {
     position: absolute;
@@ -224,11 +224,12 @@ h1 {
     left: 50%;
     bottom: -100px;
 
-    transform: translateX(-50%) scale(1.15);
+    transform: translateX(-50%) scale(1);
 
     display: block;
 
     pointer-events: none;
+    
 
     z-index: 10;
 }
