@@ -114,6 +114,9 @@ h1 {
 .character {
     will-change: transform, opacity;
 }
+.character.no-transition {
+    transition: none !important;
+}
 
 .character.active {
 
@@ -1678,15 +1681,15 @@ function showPage(id) {
 
     next.classList.add("active");
 
-    if (id === "karakter") {
+ if (id === "karakter") {
 
-        setTimeout(() => {
+    setTimeout(() => {
 
-            centerCharacter(currentIndex);
+        centerCharacter(1, false);
 
-        }, 50);
+    }, 50);
 
-    }
+}
 
 }, 500);
 }
@@ -1695,11 +1698,23 @@ const container =
         "characters"
     );
 
-const characters =
-    document.querySelectorAll(
-        ".character"
-    );
+let characters =
+    document.querySelectorAll(".character");
 
+const firstClone =
+    characters[0].cloneNode(true);
+
+const lastClone =
+    characters[characters.length - 1].cloneNode(true);
+
+container.appendChild(firstClone);
+container.insertBefore(
+    lastClone,
+    container.firstChild
+);
+
+characters =
+    document.querySelectorAll(".character");
 const roleElement =
     document.getElementById(
         "role"
@@ -1767,6 +1782,8 @@ function updateInfo(character) {
 ========================= */
 
 function updateActive() {
+    
+    if (isLooping) return;
 
     const center =
         container.scrollLeft +
@@ -1804,6 +1821,7 @@ function updateActive() {
     closest.classList.add("active");
 
     updateInfo(closest);
+    currentIndex = Array.from(characters).indexOf(closest);
 }
 
 
@@ -1811,17 +1829,8 @@ function updateActive() {
    SWIPE
 ========================= */
 
-container.addEventListener("scroll", () => {
-    requestAnimationFrame(updateActive);
-});
 
-function centerCharacter(index) {
-
-    if (index < 0) index = 0;
-
-    if (index >= characters.length) {
-        index = characters.length - 1;
-    }
+function centerCharacter(index, smooth = true) {
 
     currentIndex = index;
 
@@ -1858,15 +1867,124 @@ function centerCharacter(index) {
         container.scrollTo({
             left:
                 container.scrollLeft + move,
-            behavior: "smooth"
+            behavior: smooth ? "smooth" : "auto"
         });
 
     });
-
 }
 
-let currentIndex = 0;
+let loopTimer = null;
+
+container.addEventListener("scroll", () => {
+
+    if (isLooping) return;
+
+    requestAnimationFrame(updateActive);
+
+    clearTimeout(loopTimer);
+
+    loopTimer = setTimeout(() => {
+
+        if (currentIndex === 0) {
+
+            isLooping = true;
+
+            const target = characters[characters.length - 2];
+
+            characters.forEach(c => {
+                c.classList.add("no-transition");
+                c.classList.remove("active");
+            });
+
+            target.classList.add("active");
+
+            updateInfo(target);
+
+            const containerRect =
+                container.getBoundingClientRect();
+
+            const targetRect =
+                target.getBoundingClientRect();
+
+            const move =
+                targetRect.left +
+                targetRect.width / 2 -
+                (
+                    containerRect.left +
+                    containerRect.width / 2
+                );
+
+            container.scrollLeft += move;
+
+            currentIndex =
+                characters.length - 2;
+
+            requestAnimationFrame(() => {
+
+                characters.forEach(c => {
+                    c.classList.remove("no-transition");
+                });
+
+                isLooping = false;
+
+            });
+
+            return;
+        }
+
+
+        if (currentIndex === characters.length - 1) {
+
+            isLooping = true;
+
+            const target = characters[1];
+
+            characters.forEach(c => {
+                c.classList.add("no-transition");
+                c.classList.remove("active");
+            });
+
+            target.classList.add("active");
+
+            updateInfo(target);
+
+            const containerRect =
+                container.getBoundingClientRect();
+
+            const targetRect =
+                target.getBoundingClientRect();
+
+            const move =
+                targetRect.left +
+                targetRect.width / 2 -
+                (
+                    containerRect.left +
+                    containerRect.width / 2
+                );
+
+            container.scrollLeft += move;
+
+            currentIndex = 1;
+
+            requestAnimationFrame(() => {
+
+                characters.forEach(c => {
+                    c.classList.remove("no-transition");
+                });
+
+                isLooping = false;
+
+            });
+
+        }
+
+    }, 120);
+
+});
+
+let currentIndex = 1;
 let wheelBusy = false;
+let isLooping = false;
 
 container.addEventListener("wheel", function(e) {
 
