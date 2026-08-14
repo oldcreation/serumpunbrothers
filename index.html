@@ -1,902 +1,904 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Serumpun Brothers</title>
+    <title>Serumpun Brothers</title>
 
-<style>
+    <style>
 
-* {
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-    margin: 0;
-    min-height: 100vh;
+        body {
+            margin: 0;
+            min-height: 100vh;
 
-    background: #222; 
-    /*
+            background: #222;
+            /*
     url("img/gallery1.jpg")center center / cover no-repeat fixed;
     */
-    color: white;
+            color: white;
 
-    font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-    overflow: hidden;
-}
+            overflow: hidden;
+        }
 
 
-/* =========================
+        /* =========================
    JUDUL
 ========================= */
 
-h1 {
-    margin: 0 0 20px;
+        h1 {
+            margin: 0 0 20px;
 
-    font-size: 42px;
+            font-size: 42px;
 
-    text-align: center;
-}
+            text-align: center;
+        }
 
-.page,
-#intro {
-    position: fixed;
-    inset: 0;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+        .page,
+        #intro {
+            position: fixed;
+            inset: 0;
 
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
 
-    overflow-y: visible;
-    overflow-x: visible;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
 
-    padding: 20px;
+            overflow-y: visible;
+            overflow-x: visible;
 
-    transition:
-        opacity 0.5s ease,
-        visibility 0s linear 0.5s;
-}
+            padding: 20px;
 
-.page.active,
-#intro.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
+            transition:
+            opacity 0.5s ease,
+            visibility 0s linear 0.5s;
+        }
 
-    transition:
-        opacity 0.5s ease;
-}
+        .page.active,
+        #intro.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
 
-/* =========================
+            transition:
+            opacity 0.5s ease;
+        }
+
+        /* =========================
    CAROUSEL
 ========================= */
 
-.character-container {
-    width: 100%;
-    max-width: 1200px;
+        .character-container {
+            width: 100%;
+            max-width: 1200px;
 
-    overflow-x: auto;
-    overflow-y: hidden;
-    touch-action: pan-x;
-    display: flex;
-    align-items: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            touch-action: pan-x;
+            display: flex;
+            align-items: center;
 
-    gap: 25px;
+            gap: 25px;
 
-    padding: 110px 50% 40px;
-    
-    scroll-behavior: auto;
+            padding: 110px 50% 40px;
 
-    scrollbar-width: none;
+            scroll-behavior: auto;
 
-    flex-shrink: 0;
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: calc(50% - 20%);
-    scroll-padding-right: calc(50% - 20%);
-}
+            scrollbar-width: none;
 
-.character-container::-webkit-scrollbar {
-    display: none;
-}
+            flex-shrink: 0;
+            scroll-snap-type: x mandatory;
+            scroll-padding-left: calc(50% - 20%);
+            scroll-padding-right: calc(50% - 20%);
+        }
 
-.character {
-    will-change: transform, opacity;
-}
-.character.no-transition {
-    transition: none !important;
-}
+        .character-container::-webkit-scrollbar {
+            display: none;
+        }
 
-.character.active {
+        .character {
+            will-change: transform, opacity;
+        }
+        .character.no-transition {
+            transition: none !important;
+        }
 
-    opacity: 1;
+        .character.active {
 
-    border-color: white;
-    z-index: 10;
-    box-shadow:
-        0 0 30px rgba(255,255,255,0.3);
-}
+            opacity: 1;
 
-/* =========================
+            border-color: white;
+            z-index: 10;
+            box-shadow:
+            0 0 30px rgba(255,255,255,0.3);
+        }
+
+        /* =========================
    KARTU
 ========================= */
 
-.character {
-    position: relative;
+        .character {
+            position: relative;
 
-    flex: 0 0 180px;
-    height: 280px;
+            flex: 0 0 180px;
+            height: 280px;
 
-    scroll-snap-align: center;
+            scroll-snap-align: center;
 
-    opacity: 0.4;
-    transform: scale(0.75);
+            opacity: 0.4;
+            transform: scale(0.75);
 
-    transition:
-    transform 0.30s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.30s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.30s ease,
-    box-shadow 0.30s ease;
+            transition:
+            transform 0.30s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.30s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.30s ease,
+            box-shadow 0.30s ease;
 
-    border: 2px solid #444;
-    border-radius: 20px;
+            border: 2px solid #444;
+            border-radius: 20px;
 
-    overflow: visible;
-}
+            overflow: visible;
+        }
 
-.galerx {
-    flex: 0 0 300px;
-    height: 200px;
-}
+        .galerx {
+            flex: 0 0 300px;
+            height: 200px;
+        }
 
-/* =========================
+        /* =========================
    AREA PNG
 ========================= */
 
-.character-image {
-    position: absolute;
+        .character-image {
+            position: absolute;
 
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 60px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 60px;
 
-    background: transparent;
+            background: transparent;
 
-    border-radius: 20px 20px 0 0;
+            border-radius: 20px 20px 0 0;
 
-    clip-path: inset(
-        -150px
-        -150px
-        0
-        -150px
-    );
+            clip-path: inset(
+            -150px
+            -150px
+            0
+            -150px
+            );
 
-    overflow: visible;
+            overflow: visible;
 
-    z-index: 10;
-}
-.character-bck {
-    position: absolute;
+            z-index: 10;
+        }
+        .character-bck {
+            position: absolute;
 
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 60px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 60px;
 
-    overflow: hidden;
+            overflow: hidden;
 
-    border-radius: 18px 18px 0 0;
+            border-radius: 18px 18px 0 0;
 
-    z-index: 1;
-}
-.character-bg {
-    position: absolute;
+            z-index: 1;
+        }
+        .character-bg {
+            position: absolute;
 
-    inset: 0px;
+            inset: 0px;
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* =========================
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        /* =========================
    PNG KARAKTER
 ========================= */
 
-.character-image img {
-    position: absolute;
+        .character-image img {
+            position: absolute;
 
-    width: 400px;
-    height: 400px;
+            width: 400px;
+            height: 400px;
 
-    max-width: none;
+            max-width: none;
 
-    object-fit: contain;
+            object-fit: contain;
 
-    left: 50%;
-    bottom: -100px;
+            left: 50%;
+            bottom: -100px;
 
-    transform: translateX(-50%) scale(1);
+            transform: translateX(-50%) scale(1);
 
-    display: block;
+            display: block;
 
-    pointer-events: none;
-    
-
-    z-index: 10;
-}
+            pointer-events: none;
 
 
-/* =========================
+            z-index: 10;
+        }
+
+
+        /* =========================
    NAMA KARAKTER
 ========================= */
 
-.character-name {
-    position: absolute;
+        .character-name {
+            position: absolute;
 
-    left: -2px;
-    right: -2px;
+            left: -2px;
+            right: -2px;
 
-    bottom: -2px;
+            bottom: -2px;
 
-    height: 62px;
+            height: 62px;
 
-    background: #222;
+            background: #222;
 
-    border: 2px solid #444;
+            border: 2px solid #444;
 
-    border-radius: 0 0 20px 20px;
+            border-radius: 0 0 20px 20px;
 
-    display: flex;
+            display: flex;
 
-    align-items: center;
-    justify-content: center;
+            align-items: center;
+            justify-content: center;
 
-    font-size: 19px;
-    font-weight: bold;
+            font-size: 19px;
+            font-weight: bold;
 
-    z-index: 50;
-}
+            z-index: 50;
+        }
 
-/* =========================
+        /* =========================
    KARAKTER AKTIF
 ========================= */
 
-.character.active {
-    transform: scale(1.15);
+        .character.active {
+            transform: scale(1.15);
 
-    opacity: 1;
-    z-index: 20;
-    border-color: white;
+            opacity: 1;
+            z-index: 20;
+            border-color: white;
 
-    box-shadow:
-        0 0 30px rgba(255,255,255,0.3);
-}
+            box-shadow:
+            0 0 30px rgba(255,255,255,0.3);
+        }
 
-.character.active .character-name {
-    border-color: white;
-}
+        .character.active .character-name {
+            border-color: white;
+        }
 
 
-/* =========================
+        /* =========================
    INFORMASI
 ========================= */
 
-.character-info {
-    width: 90%;
+        .character-info {
+            width: 90%;
 
-    max-width: 600px;
+            max-width: 600px;
 
-    margin-top: 20px;
+            margin-top: 20px;
 
-    text-align: center;
+            text-align: center;
 
-    animation: fadeInfo 0.35s ease;
-}
+            animation: fadeInfo 0.35s ease;
+        }
 
-.role {
-    margin-top: 5px;
-    font-size: 13px;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.description {
-    margin-top: 12px;
+        .role {
+            margin-top: 5px;
+            font-size: 13px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .description {
+            margin-top: 12px;
 
-    color: #ccc;
+            color: #ccc;
 
-    line-height: 1.5;
+            line-height: 1.5;
 
-    font-size: 15px;
-}
+            font-size: 15px;
+        }
 
 
-/* =========================
+        /* =========================
    STATUS
 ========================= */
 
-.stats {
-    display: flex;
+        .stats {
+            display: flex;
 
-    justify-content: center;
+            justify-content: center;
 
-    gap: 25px;
+            gap: 25px;
 
-    margin-top: 15px;
-}
+            margin-top: 15px;
+        }
 
-.stat {
-    min-width: 60px;
-}
+        .stat {
+            min-width: 60px;
+        }
 
-.stat-title {
-    display: block;
+        .stat-title {
+            display: block;
 
-    font-size: 11px;
+            font-size: 11px;
 
-    color: #888;
-}
+            color: #888;
+        }
 
-.stat-value {
-    display: block;
+        .stat-value {
+            display: block;
 
-    margin-top: 4px;
+            margin-top: 4px;
 
-    font-size: 18px;
+            font-size: 18px;
 
-    font-weight: bold;
-}
+            font-weight: bold;
+        }
 
 
-/* =========================
+        /* =========================
    TOMBOL
 ========================= */
 
-button {
-    margin-top: 20px;
+        button {
+            margin-top: 20px;
 
-    padding: 12px 35px;
+            padding: 12px 35px;
 
-    border: none;
+            border: none;
 
-    border-radius: 30px;
+            border-radius: 30px;
 
-    background: white;
+            background: white;
 
-    color: black;
+            color: black;
 
-    font-size: 15px;
+            font-size: 15px;
 
-    font-weight: bold;
+            font-weight: bold;
 
-    cursor: pointer;
-    
-    transition:
-        transform 0.08s ease,
-        box-shadow 0.08s ease;
+            cursor: pointer;
 
-    box-shadow:
-        0 5px 0 #999;
-}
+            transition:
+            transform 0.08s ease,
+            box-shadow 0.08s ease;
 
-button:hover {
-    transform: translateY(-1px);
-}
+            box-shadow:
+            0 5px 0 #999;
+        }
 
-button:active {
-    transform: translateY(4px) scale(0.96);
+        button:hover {
+            transform: translateY(-1px);
+        }
 
-    box-shadow:
-        0 1px 0 #999;
-}
+        button:active {
+            transform: translateY(4px) scale(0.96);
 
-.menu-button {
-    width: 200px;
-}
+            box-shadow:
+            0 1px 0 #999;
+        }
 
-/* =========================
+        .menu-button {
+            width: 200px;
+        }
+
+        /* =========================
    ANIMASI
 ========================= */
 
-@keyframes fadeInfo {
+        @keyframes fadeInfo {
 
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
-}
+        }
 
-/* =========================
+        /* =========================
    HILANGKAN GLITCH / FLASH BIRU
 ========================= */
 
-button,
-.character {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-}
+        button,
+        .character {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
 
-button:focus,
-button:active {
-    outline: none;
-    box-shadow: none;
-}
+        button:focus,
+        button:active {
+            outline: none;
+            box-shadow: none;
+        }
 
-/* =========================
+        /* =========================
    OVERLAY SEJARAH
 ========================= */
 
-.story-overlay {
-    position: fixed;
-    inset: 0;
+        .story-overlay {
+            position: fixed;
+            inset: 0;
 
-    z-index: 9999;
+            z-index: 9999;
 
-    display: none;
+            display: none;
 
-    justify-content: center;
-    align-items: center;
+            justify-content: center;
+            align-items: center;
 
-    padding: 30px;
+            padding: 30px;
 
-    background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.35);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
 
-    animation: storyFade 0.4s ease;
-}
+            animation: storyFade 0.4s ease;
+        }
 
 
-/* =========================
+        /* =========================
    TEKS SEJARAH
 ========================= */
 
-.story-panel {
-    width: 100%;
-    max-width: 550px;
+        .story-panel {
+            width: 100%;
+            max-width: 550px;
 
-    background: transparent;
+            background: transparent;
 
-    border: none;
-    box-shadow: none;
+            border: none;
+            box-shadow: none;
 
-    padding: 20px;
+            padding: 20px;
 
-    text-align: center;
+            text-align: center;
 
-    overflow: visible;
+            overflow: visible;
 
-    animation: storyEnter 0.5s ease;
-}
+            animation: storyEnter 0.5s ease;
+        }
 
 
-/* =========================
+        /* =========================
    HAPUS GAMBAR
 ========================= */
 
-.story-character {
-    display: none;
-}
+        .story-character {
+            display: none;
+        }
 
 
-/* =========================
+        /* =========================
    NAMA
 ========================= */
 
-.story-name {
-    font-size: 36px;
+        .story-name {
+            font-size: 36px;
 
-    font-weight: bold;
+            font-weight: bold;
 
-    color: white;
-}
+            color: white;
+        }
 
 
-/* =========================
+        /* =========================
    ROLE
 ========================= */
 
-.story-role {
-    margin-top: 5px;
+        .story-role {
+            margin-top: 5px;
 
-    font-size: 13px;
+            font-size: 13px;
 
-    font-weight: bold;
+            font-weight: bold;
 
-    color: white;
+            color: white;
 
-    letter-spacing: 3px;
+            letter-spacing: 3px;
 
-    text-transform: uppercase;
-}
+            text-transform: uppercase;
+        }
 
 
-/* =========================
+        /* =========================
    JUDUL
 ========================= */
 
-.story-title {
-    margin-top: 30px;
+        .story-title {
+            margin-top: 30px;
 
-    font-size: 17px;
+            font-size: 17px;
 
-    font-weight: bold;
+            font-weight: bold;
 
-    color: white;
+            color: white;
 
-    letter-spacing: 2px;
-}
+            letter-spacing: 2px;
+        }
 
 
-/* =========================
+        /* =========================
    TEKS SEJARAH
 ========================= */
 
-.story-text {
-    margin-top: 15px;
+        .story-text {
+            margin-top: 15px;
 
-    color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.9);
 
-    font-size: 16px;
+            font-size: 16px;
 
-    line-height: 1.8;
+            line-height: 1.8;
 
-    text-align: center;
-}
+            text-align: center;
+        }
 
 
-/* =========================
+        /* =========================
    TOMBOL
 ========================= */
 
-.story-close {
-    margin-top: 30px;
+        .story-close {
+            margin-top: 30px;
 
-    padding: 10px 28px;
+            padding: 10px 28px;
 
-    border: 1px solid rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.5);
 
-    border-radius: 30px;
+            border-radius: 30px;
 
-    background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.9);
 
-    color: #111;
+            color: #111;
 
-    font-weight: bold;
+            font-weight: bold;
 
-    cursor: pointer;
+            cursor: pointer;
 
-    -webkit-tap-highlight-color: transparent;
-}
+            -webkit-tap-highlight-color: transparent;
+        }
 
 
-/* =========================
+        /* =========================
    ANIMASI
 ========================= */
 
-@keyframes storyFade {
+        @keyframes storyFade {
 
-    from {
-        opacity: 0;
-    }
+            from {
+                opacity: 0;
+            }
 
-    to {
-        opacity: 1;
-    }
+            to {
+                opacity: 1;
+            }
 
-}
+        }
 
-@keyframes storyFadeOut {
+        @keyframes storyFadeOut {
 
-    from {
-        opacity: 1;
-    }
+            from {
+                opacity: 1;
+            }
 
-    to {
-        opacity: 0;
-    }
+            to {
+                opacity: 0;
+            }
 
-}
+        }
 
-@keyframes storyEnter {
+        @keyframes storyEnter {
 
-    from {
-        opacity: 0;
+            from {
+                opacity: 0;
 
-        transform: translateY(25px);
-    }
+                transform: translateY(25px);
+            }
 
-    to {
-        opacity: 1;
+            to {
+                opacity: 1;
 
-        transform: translateY(0);
-    }
+                transform: translateY(0);
+            }
 
-}
+        }
 
-/*loading*/
-#loader {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
+        /*loading*/
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
 
-    background: #111;
+            background: #111;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-}
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
 
-#loader.hide {
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.5s ease;
-}
+        #loader.hide {
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s ease;
+        }
 
-#loadingDots {
-    width: 60px;
-    text-align: left;
-}
-.menu-content {
-    width: 90%;
-    max-width: 600px;
+        #loadingDots {
+            width: 60px;
+            text-align: left;
+        }
+        .menu-content {
+            width: 90%;
+            max-width: 600px;
 
-    padding: 40px;
+            padding: 40px;
 
-    text-align: center;
+            text-align: center;
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
 
-    border-radius: 25px;
+            border-radius: 25px;
 
-    animation: menuEnter 0.5s ease;
-}
+            animation: menuEnter 0.5s ease;
+        }
 
-.menu-content h1 {
-    margin: 0 0 15px;
-}
+        .menu-content h1 {
+            margin: 0 0 15px;
+        }
 
-.menu-content p {
-    margin: 0;
+        .menu-content p {
+            margin: 0;
 
-    color: white;
+            color: white;
 
-    font-size: 16px;
-    line-height: 1.8;
-}
+            font-size: 16px;
+            line-height: 1.8;
+        }
 
 
-@keyframes menuEnter {
+        @keyframes menuEnter {
 
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
-}
-.gallery-container {
-    width: 100%;
-    max-width: 1000px;
+        }
+        .gallery-container {
+            width: 100%;
+            max-width: 1000px;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
 
-    gap: 20px;
+            gap: 20px;
 
-    overflow-y: auto;
-    overflow-x: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
 
-    padding: 30px 20px;
+            padding: 30px 20px;
 
-    scrollbar-width: none;
-}
+            scrollbar-width: none;
+        }
 
-.gallery-container::-webkit-scrollbar {
-    display: none;
-}
+        .gallery-container::-webkit-scrollbar {
+            display: none;
+        }
 
 
-.gallery-card {
-    position: relative;
+        .gallery-card {
+            position: relative;
 
-    width: 100%;
-    aspect-ratio: 3 / 2;
+            width: 100%;
+            aspect-ratio: 3 / 2;
 
-    border: 2px solid #444;
-    border-radius: 20px;
+            border: 2px solid #444;
+            border-radius: 20px;
 
-    overflow: hidden;
+            overflow: hidden;
 
-    cursor: pointer;
+            cursor: pointer;
 
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-    user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            user-select: none;
 
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
-.gallery-card:focus,
-.gallery-card:active {
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-}
+            transition:
+            transform 0.3s ease,
+            border-color 0.3s ease;
+        }
+        .gallery-card:focus,
+        .gallery-card:active {
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-.gallery-card:hover {
-    transform: scale(1.03);
-    border-color: white;
-}
+        .gallery-card:hover {
+            transform: scale(1.03);
+            border-color: white;
+        }
 
-.gallery-image {
-    position: absolute;
+        .gallery-image {
+            position: absolute;
 
-    inset: 0;
+            inset: 0;
 
-    overflow: hidden;
-}
+            overflow: hidden;
+        }
 
 
-.gallery-image img {
-    width: 100%;
-    height: 100%;
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
 
-    object-fit: cover;
+            object-fit: cover;
 
-    display: block;
-}
+            display: block;
+        }
 
 
-.gallery-title {
-    position: absolute;
+        .gallery-title {
+            position: absolute;
 
-    left: 0;
-    right: 0;
-    bottom: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
 
-    height: 55px;
+            height: 55px;
 
-    background: rgba(20,20,20,0.9);
+            background: rgba(20,20,20,0.9);
 
-    display: flex;
+            display: flex;
 
-    align-items: center;
-    justify-content: center;
+            align-items: center;
+            justify-content: center;
 
-    font-size: 18px;
-    font-weight: bold;
+            font-size: 18px;
+            font-weight: bold;
 
-    z-index: 2;
-}
-.gallery-overlay {
-    position: fixed;
-    inset: 0;
+            z-index: 2;
+        }
+        .gallery-overlay {
+            position: fixed;
+            inset: 0;
 
-    z-index: 9999;
+            z-index: 9999;
 
-    display: none;
+            display: none;
 
-    animation: storyFade 0.4s ease;
+            animation: storyFade 0.4s ease;
 
-    justify-content: center;
-    align-items: center;
+            justify-content: center;
+            align-items: center;
 
-    padding: 30px;
+            padding: 30px;
 
-    background: rgba(0,0,0,0.35);
+            background: rgba(0,0,0,0.35);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
 
 
-.gallery-panel {
-    width: 100%;
-    max-width: 550px;
+        .gallery-panel {
+            width: 100%;
+            max-width: 550px;
 
-    padding: 30px;
+            padding: 30px;
 
-    text-align: center;
-}
+            text-align: center;
+        }
 
 
-.gallery-detail-title {
-    font-size: 32px;
+        .gallery-detail-title {
+            font-size: 32px;
 
-    font-weight: bold;
+            font-weight: bold;
 
-    color: white;
-}
+            color: white;
+        }
 
 
-.gallery-detail-text {
-    margin-top: 20px;
+        .gallery-detail-text {
+            margin-top: 20px;
 
-    color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.9);
 
-    font-size: 16px;
+            font-size: 16px;
 
-    line-height: 1.8;
-}
+            line-height: 1.8;
+        }
 
-@media (max-width: 600px) {
+        @media (max-width: 600px) {
 
-    #galeri {
-        display: block;
-        overflow-y: auto;
-        padding: 25px 15px;
-    }
+            #galeri {
+                display: block;
+                overflow-y: auto;
+                padding: 25px 15px;
+            }
 
-    #galeri h1 {
-        margin-bottom: 20px;
-    }
+            #galeri h1 {
+                margin-bottom: 20px;
+            }
 
-    #galeri .gallery-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
+            #galeri .gallery-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 20px;
 
-        width: 100%;
-        height: auto;
-        max-height: none;
+                width: 100%;
+                height: auto;
+                max-height: none;
 
-        overflow: visible;
+                overflow: visible;
 
-        padding: 0 0 20px;
-    }
+                padding: 0 0 20px;
+            }
 
-    #galeri .gallery-card {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 10;
+            #galeri .gallery-card {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 10;
 
-        min-height: 0;
-    }
+                min-height: 0;
+            }
 
-    #galeri > button {
-        display: block;
-        margin: 20px auto;
-    }
-}
+            #galeri > button {
+                display: block;
+                margin: 20px auto;
+            }
+        }
 
-</style>
+    </style>
 </head>
 
 <body>
 
-<div id="loader">
-    <div id="loadingDots">.</div>
-</div>
+    <div id="loader">
+        <div id="loadingDots">
+            .
+        </div>
+    </div>
 
     <!-- INTRO -->
     <section id="intro" class="active">
@@ -931,16 +933,16 @@ button:active {
     <section id="event" class="page">
 
         <div class="menu-content">
-        <h1>EVENT</h1>
+            <h1>EVENT</h1>
             <p>
-            Serumpun Meats and Grit.(kada usah dikoreksi kris ai)
-        </p>
-        <!-- isi event -->
+                Serumpun Meats and Grit.(kada usah dikoreksi kris ai)
+            </p>
+            <!-- isi event -->
 
-        <button onclick="showPage('home')">
-            KEMBALI
-        </button>
-    </div>
+            <button onclick="showPage('home')">
+                KEMBALI
+            </button>
+        </div>
     </section>
 
 
@@ -949,195 +951,195 @@ button:active {
         <h1>GALERI</h1>
         <div class="gallery-container">
 
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Pertama"
-        data-description="Ini adalah deskripsi untuk momen pertama."
-    >
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Pertama"
+                data-description="Ini adalah deskripsi untuk momen pertama."
+                >
 
-        <div class="gallery-image">
-            <img src="img/gallery1.jpg">
+                <div class="gallery-image">
+                    <img src="img/gallery1.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Pertama
+                </div>
+
+            </div>
+
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Kedua"
+                data-description="Ini adalah deskripsi untuk momen kedua."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery2.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Kedua
+                </div>
+
+            </div>
+
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Ketiga"
+                data-description="Ini adalah deskripsi untuk momen ketiga."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery3.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Ketiga
+                </div>
+
+            </div>
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Pertama"
+                data-description="Ini adalah deskripsi untuk momen pertama."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery1.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Pertama
+                </div>
+
+            </div>
+
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Kedua"
+                data-description="Ini adalah deskripsi untuk momen kedua."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery2.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Kedua
+                </div>
+
+            </div>
+
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Ketiga"
+                data-description="Ini adalah deskripsi untuk momen ketiga."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery3.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Ketiga
+                </div>
+
+            </div>
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Pertama"
+                data-description="Ini adalah deskripsi untuk momen pertama."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery1.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Pertama
+                </div>
+
+            </div>
+
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Kedua"
+                data-description="Ini adalah deskripsi untuk momen kedua."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery2.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Kedua
+                </div>
+
+            </div>
+
+
+            <div
+                class="gallery-card"
+                onclick="bukaGaleri(this)"
+                data-title="Momen Ketiga"
+                data-description="Ini adalah deskripsi untuk momen ketiga."
+                >
+
+                <div class="gallery-image">
+                    <img src="img/gallery3.jpg">
+                </div>
+
+                <div class="gallery-title">
+                    Momen Ketiga
+                </div>
+
+            </div>
+
         </div>
-
-        <div class="gallery-title">
-            Momen Pertama
-        </div>
-
-    </div>
-
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Kedua"
-        data-description="Ini adalah deskripsi untuk momen kedua."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery2.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Kedua
-        </div>
-
-    </div>
-
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Ketiga"
-        data-description="Ini adalah deskripsi untuk momen ketiga."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery3.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Ketiga
-        </div>
-
-    </div>
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Pertama"
-        data-description="Ini adalah deskripsi untuk momen pertama."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery1.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Pertama
-        </div>
-
-    </div>
-
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Kedua"
-        data-description="Ini adalah deskripsi untuk momen kedua."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery2.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Kedua
-        </div>
-
-    </div>
-
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Ketiga"
-        data-description="Ini adalah deskripsi untuk momen ketiga."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery3.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Ketiga
-        </div>
-
-    </div>
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Pertama"
-        data-description="Ini adalah deskripsi untuk momen pertama."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery1.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Pertama
-        </div>
-
-    </div>
-
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Kedua"
-        data-description="Ini adalah deskripsi untuk momen kedua."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery2.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Kedua
-        </div>
-
-    </div>
-
-
-    <div
-        class="gallery-card"
-        onclick="bukaGaleri(this)"
-        data-title="Momen Ketiga"
-        data-description="Ini adalah deskripsi untuk momen ketiga."
-    >
-
-        <div class="gallery-image">
-            <img src="img/gallery3.jpg">
-        </div>
-
-        <div class="gallery-title">
-            Momen Ketiga
-        </div>
-
-    </div>    
-
-</div>
-<div
-    class="gallery-overlay"
-    id="galleryOverlay"
->
-
-    <div class="gallery-panel">
-
         <div
-            class="gallery-detail-title"
-            id="galleryDetailTitle"
-        >
+            class="gallery-overlay"
+            id="galleryOverlay"
+            >
+
+            <div class="gallery-panel">
+
+                <div
+                    class="gallery-detail-title"
+                    id="galleryDetailTitle"
+                    >
+                </div>
+
+                <div
+                    class="gallery-detail-text"
+                    id="galleryDetailText"
+                    >
+                </div>
+
+                <button
+                    class="gallery-close"
+                    onclick="tutupGaleri()"
+                    >
+                    KEMBALI
+                </button>
+
+            </div>
+
         </div>
-
-        <div
-            class="gallery-detail-text"
-            id="galleryDetailText"
-        >
-        </div>
-
-        <button
-            class="gallery-close"
-            onclick="tutupGaleri()"
-        >
-            KEMBALI
-        </button>
-
-    </div>
-
-</div>
         <!-- isi galeri -->
 
         <button onclick="showPage('home')">
@@ -1148,411 +1150,411 @@ button:active {
 
     <!-- KARAKTER -->
     <section id="karakter" class="page">
-    
-    <h1>Pilih Karakter</h1>
 
+        <h1>Pilih Karakter</h1>
 
-<div
-    class="character-container"
-    id="characters"
->
-
-
-    <!-- WARRIOR 111-->
-
-    <div
-        class="character active"
-
-        data-name="OMAN THE K-TOWN BOYS"
-        data-role="Fighter"
-        data-description="Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar."
-        data-hp="95"
-        data-atk="85"
-        data-def="90"
-        data-story="Memiliki gaya bertarung yang bertolak belakang dengan bakat alami nya yang langka, dia selalu tampil santai, seolah tidak perlu mengerahkan seluruh kemampuan nya untuk memenangkan pertarungan."        
-        >
-        
-        <div class="character-bck">
 
         <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/oman.webp">
-
-        </div>
-
-        <div class="character-name">
-            Oman
-        </div>
-
-    </div>
-
-
-
-    <!-- RIZQON -->
-
-    <div
-        class="character"
-
-        data-name="Gideon Alduk"
-        data-role="Mage"
-        data-description="Memiliki jurus mematikan, ledakan
-        api yg membara, suka friendly fire."
-        data-hp="50"
-        data-atk="100"
-        data-def="30"
-        data-story="Ampunnya Alalak Selatan, penjagaunya Handil, p info gladiator."   
-        >
-        
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/aldi.webp">
-
-        </div>
-
-        <div class="character-name">
-            Gideon Alduk
-        </div>
-
-    </div>
-
-
-    <!-- ARCHER -->
-
-    <div
-        class="character"
-
-        data-name="Archer"
-        data-role="Ranged"
-        data-description="Pemanah cepat yang mampu menyerang musuh dari jarak jauh."
-        data-hp="70"
-        data-atk="88"
-        data-def="55"
-        data-story="kajung tarus"
-    >
-
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/fajar.webp">
-
-        </div>
-
-        <div class="character-name">
-            Fajar Viral
-        </div>
-
-    </div>
-
-
-    <!-- ASSASSIN -->
-
-    <div
-        class="character"
-
-        data-name="Assassin"
-        data-role="Assassin"
-        data-description="Karakter cepat dengan serangan kritis mematikan dan mobilitas tinggi."
-        data-hp="65"
-        data-atk="100"
-        data-def="40"
-        data-story="Rizqon adalah seorang petarung yang tumbuh dari lingkungan keras. Ia belajar bahwa kekuatan bukan hanya tentang seberapa kuat seseorang menyerang, tetapi juga tentang keberanian untuk melindungi orang-orang yang berharga baginya."
-    >
-
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/rizqon.webp">
-
-        </div>
-
-        <div class="character-name">
-            Ganteng
-        </div>
-
-    </div>
-
-
-    <!-- TANK -->
-
-    <div
-        class="character"
-
-        data-name="Tank"
-        data-role="Defender"
-        data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
-        data-hp="100"
-        data-atk="60"
-        data-def="100"
-        data-story="nasgor rady"
-    >
-
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/sam.webp">
-
-        </div>
-
-        <div class="character-name">
-            Nasgor Sam
-        </div>
-
-    </div>
-
-        <div
-        class="character"
-
-        data-name="Tank"
-        data-role="Defender"
-        data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
-        data-hp="100"
-        data-atk="60"
-        data-def="100"
-        data-story="kaitu haja jua"
-    >
-
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/krisna.webp">
-
-        </div>
-
-        <div class="character-name">
-            Krislaw
-        </div>
-
-    </div>
-
-    <div
-        class="character"
-
-        data-name="Tank"
-        data-role="Defender"
-        data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
-        data-hp="100"
-        data-atk="60"
-        data-def="100"
-        data-story="fotomall"
-    >
-
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/akmal.webp">
-
-        </div>
-
-        <div class="character-name">
-            Akmal Pemko
-        </div>
-
-    </div>
-
-    <div
-        class="character"
-
-        data-name="Tank"
-        data-role="Defender"
-        data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
-        data-hp="100"
-        data-atk="60"
-        data-def="100"
-        data-story="coach andalan canost"
-    >
-
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/aksay.webp">
-
-        </div>
-
-        <div class="character-name">
-            Aksay Menggaruk
-        </div>
-
-    </div>
-
-    <div
-        class="character"
-
-        data-name="Tank"
-        data-role="Typologia"
-        data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
-        data-hp="100"
-        data-atk="60"
-        data-def="100"
-        data-story="adalah spesies unit hutan bukit batu"
-    >
-
-        <div class="character-bck">
-
-        <div
-        class="character-bg"
-        style="background-image:url('img/laut.webp');">
-        </div>
-
-        </div>
-        <div class="character-image">
-
-            <img src="img/klinten.webp">
-
-        </div>
-
-        <div class="character-name">
-            Klinten Typo
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     INFORMASI KARAKTER
-========================= -->
-
-<div
-    class="character-info"
-    id="characterInfo"
->
-
-    <div
-        class="role"
-        id="role"
-    >
-        Fighter
-    </div>
-
-
-    <div
-        class="description"
-        id="description"
-    >
-        Petarung jarak dekat dengan pertahanan kuat
-        dan serangan fisik yang besar.
-    </div>
-
-
-    <div class="stats">
-
-        <div class="stat">
-
-            <span class="stat-title">
-                HP
-            </span>
-
-            <span
-                class="stat-value"
-                id="hp"
+            class="character-container"
+            id="characters"
             >
-                95
-            </span>
+
+
+            <!-- WARRIOR 111-->
+
+            <div
+                class="character active"
+
+                data-name="OMAN THE K-TOWN BOYS"
+                data-role="Fighter"
+                data-description="Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar."
+                data-hp="95"
+                data-atk="85"
+                data-def="90"
+                data-story="Memiliki gaya bertarung yang bertolak belakang dengan bakat alami nya yang langka, dia selalu tampil santai, seolah tidak perlu mengerahkan seluruh kemampuan nya untuk memenangkan pertarungan."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/oman.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Oman
+                </div>
+
+            </div>
+
+
+
+            <!-- RIZQON -->
+
+            <div
+                class="character"
+
+                data-name="Gideon Alduk"
+                data-role="Mage"
+                data-description="Memiliki jurus mematikan, ledakan
+                api yg membara, suka friendly fire."
+                data-hp="50"
+                data-atk="100"
+                data-def="30"
+                data-story="Ampunnya Alalak Selatan, penjagaunya Handil, p info gladiator."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/aldi.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Gideon Alduk
+                </div>
+
+            </div>
+
+
+            <!-- ARCHER -->
+
+            <div
+                class="character"
+
+                data-name="Archer"
+                data-role="Ranged"
+                data-description="Pemanah cepat yang mampu menyerang musuh dari jarak jauh."
+                data-hp="70"
+                data-atk="88"
+                data-def="55"
+                data-story="kajung tarus"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/fajar.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Fajar Viral
+                </div>
+
+            </div>
+
+
+            <!-- ASSASSIN -->
+
+            <div
+                class="character"
+
+                data-name="Assassin"
+                data-role="Assassin"
+                data-description="Karakter cepat dengan serangan kritis mematikan dan mobilitas tinggi."
+                data-hp="65"
+                data-atk="100"
+                data-def="40"
+                data-story="Rizqon adalah seorang petarung yang tumbuh dari lingkungan keras. Ia belajar bahwa kekuatan bukan hanya tentang seberapa kuat seseorang menyerang, tetapi juga tentang keberanian untuk melindungi orang-orang yang berharga baginya."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/rizqon.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Ganteng
+                </div>
+
+            </div>
+
+
+            <!-- TANK -->
+
+            <div
+                class="character"
+
+                data-name="Tank"
+                data-role="Defender"
+                data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
+                data-hp="100"
+                data-atk="60"
+                data-def="100"
+                data-story="nasgor rady"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/sam.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Nasgor Sam
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Tank"
+                data-role="Defender"
+                data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
+                data-hp="100"
+                data-atk="60"
+                data-def="100"
+                data-story="kaitu haja jua"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/krisna.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Krislaw
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Tank"
+                data-role="Defender"
+                data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
+                data-hp="100"
+                data-atk="60"
+                data-def="100"
+                data-story="fotomall"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/akmal.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Akmal Pemko
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Tank"
+                data-role="Defender"
+                data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
+                data-hp="100"
+                data-atk="60"
+                data-def="100"
+                data-story="coach andalan canost"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/aksay.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Aksay Menggaruk
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Tank"
+                data-role="Typologia"
+                data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
+                data-hp="100"
+                data-atk="60"
+                data-def="100"
+                data-story="adalah spesies unit hutan bukit batu"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/klinten.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Klinten Typo
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="stat">
+        <!-- =========================
+                     INFORMASI KARAKTER
+                ========================= -->
 
-            <span class="stat-title">
-                ATK
-            </span>
-
-            <span
-                class="stat-value"
-                id="atk"
+        <div
+            class="character-info"
+            id="characterInfo"
             >
-                85
-            </span>
+
+            <div
+                class="role"
+                id="role"
+                >
+                Fighter
+            </div>
+
+
+            <div
+                class="description"
+                id="description"
+                >
+                Petarung jarak dekat dengan pertahanan kuat
+                dan serangan fisik yang besar.
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <span class="stat-title">
+                        HP
+                    </span>
+
+                    <span
+                        class="stat-value"
+                        id="hp"
+                        >
+                        95
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <span class="stat-title">
+                        ATK
+                    </span>
+
+                    <span
+                        class="stat-value"
+                        id="atk"
+                        >
+                        85
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <span class="stat-title">
+                        DEF
+                    </span>
+
+                    <span
+                        class="stat-value"
+                        id="def"
+                        >
+                        90
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="stat">
-
-            <span class="stat-title">
-                DEF
-            </span>
-
-            <span
-                class="stat-value"
-                id="def"
-            >
-                90
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<button onclick="pilihKarakter()">
-    PILIH KARAKTER
-</button>
-<button onclick="showPage('home')">
+        <button onclick="pilihKarakter()">
+            PILIH KARAKTER
+        </button>
+        <button onclick="showPage('home')">
             KEMBALI
         </button>
         <!-- pemilihan karakter kamu
-             dimasukkan di sini -->
+                             dimasukkan di sini -->
 
     </section>
 
@@ -1560,556 +1562,605 @@ button:active {
     <!-- LAIN-LAIN -->
     <section id="lain" class="page">
         <div class="menu-content">
-        <h1>LAIN-LAIN</h1>
+            <h1>LAIN-LAIN</h1>
             <p>
-            tiada tuhan seLAIN Allah.
-        </p>
-        <!-- isi event -->
+                tiada tuhan seLAIN Allah.
+            </p>
+            <!-- isi event -->
 
-        <button onclick="showPage('home')">
-            KEMBALI
-        </button>
-    </div>
+            <button onclick="showPage('home')">
+                KEMBALI
+            </button>
+        </div>
     </section>
 
 
-<!-- =========================
-     SEJARAH KARAKTER
-========================= -->
+    <!-- =========================
+             SEJARAH KARAKTER
+        ========================= -->
 
-<div
-    class="story-overlay"
-    id="storyOverlay"
->
-
-    <div class="story-panel">
-
-        <div
-            class="story-name"
-            id="storyName"
+    <div
+        class="story-overlay"
+        id="storyOverlay"
         >
-            Rizqon
-        </div>
 
-        <div
-            class="story-role"
-            id="storyRole"
-        >
-            FIGHTER
-        </div>
+        <div class="story-panel">
 
-        <div class="story-title">
-            Informasi Karakter
-        </div>
+            <div
+                class="story-name"
+                id="storyName"
+                >
+                Rizqon
+            </div>
 
-        <div
-            class="story-text"
-            id="storyText"
-        >
-        </div>
+            <div
+                class="story-role"
+                id="storyRole"
+                >
+                FIGHTER
+            </div>
 
-        <button class="active story-close"
-            onclick="tutupSejarah()"
-        >
-            KEMBALI
-        </button>
+            <div class="story-title">
+                Informasi Karakter
+            </div>
+
+            <div
+                class="story-text"
+                id="storyText"
+                >
+            </div>
+
+            <button class="active story-close"
+                onclick="tutupSejarah()"
+                >
+                KEMBALI
+            </button>
+
+        </div>
 
     </div>
 
-</div>
+    <script>
+        function bukaGaleri(card) {
 
-<script>
-function bukaGaleri(card) {
+            document.getElementById(
+                "galleryDetailTitle"
+            ).textContent =
+            card.dataset.title;
 
-    document.getElementById(
-        "galleryDetailTitle"
-    ).textContent =
-        card.dataset.title;
+            document.getElementById(
+                "galleryDetailText"
+            ).textContent =
+            card.dataset.description;
 
-    document.getElementById(
-        "galleryDetailText"
-    ).textContent =
-        card.dataset.description;
-
-    document.getElementById(
-        "galleryOverlay"
-    ).style.display =
-        "flex";
-}
+            document.getElementById(
+                "galleryOverlay"
+            ).style.display =
+            "flex";
+        }
 
 
-function tutupGaleri() {
+        function tutupGaleri() {
 
-    const gallery =
-        document.getElementById("galleryOverlay");
+            const gallery =
+            document.getElementById("galleryOverlay");
 
-    gallery.style.animation =
-        "storyFadeOut 0.4s ease";
+            gallery.style.animation =
+            "storyFadeOut 0.4s ease";
 
-    setTimeout(() => {
+            setTimeout(() => {
 
-        gallery.style.display = "none";
+                gallery.style.display = "none";
 
-        gallery.style.animation =
-            "storyFade 0.4s ease";
+                gallery.style.animation =
+                "storyFade 0.4s ease";
 
-    }, 400);
-}
-function showPage(id) {
+            }, 400);
+        }
+        function showPage(id) {
 
-    const current =
-        document.querySelector(
-            ".page.active, #intro.active"
+            const current =
+            document.querySelector(
+                ".page.active, #intro.active"
+            );
+
+            const next =
+            document.getElementById(id);
+
+            if (!next || current === next) return;
+
+
+            /* FADE OUT */
+
+            if (current) {
+                current.classList.remove("active");
+            }
+
+
+            /* Tunggu fade-out selesai */
+
+            setTimeout(() => {
+
+                next.classList.add("active");
+
+                if (id === "karakter") {
+
+                    setTimeout(() => {
+
+                       const totalCharacter =
+originalCharacters.length;
+
+const middleStart =
+totalCharacter;
+
+const randomIndex =
+middleStart +
+Math.floor(Math.random() * totalCharacter);
+
+centerCharacter(randomIndex, false);
+
+                        centerCharacter(randomIndex, false);
+
+                    }, 50);
+
+                }
+            },
+                500);
+        }
+        const container =
+        document.getElementById(
+            "characters"
         );
 
-    const next =
-        document.getElementById(id);
+        let characters =
+        document.querySelectorAll(".character");
 
-    if (!next || current === next) return;
-
-
-    /* FADE OUT */
-
-    if (current) {
-        current.classList.remove("active");
-    }
-
-
-    /* Tunggu fade-out selesai */
-
-    setTimeout(() => {
-
-    next.classList.add("active");
-
- if (id === "karakter") {
-
-    setTimeout(() => {
-
-        centerCharacter(1, false);
-
-    }, 50);
-
-}
-
-}, 500);
-}
-const container =
-    document.getElementById(
-        "characters"
+        const originalCharacters =
+    Array.from(
+        document.querySelectorAll(".character")
     );
 
-let characters =
-    document.querySelectorAll(".character");
+container.innerHTML = "";
 
-const firstClone =
-    characters[0].cloneNode(true);
+for (let group = 0; group < 3; group++) {
 
-const lastClone =
-    characters[characters.length - 1].cloneNode(true);
+    originalCharacters.forEach(character => {
 
-container.appendChild(firstClone);
-container.insertBefore(
-    lastClone,
-    container.firstChild
-);
+        const clone =
+            character.cloneNode(true);
+
+        container.appendChild(clone);
+
+    });
+
+}
 
 characters =
     document.querySelectorAll(".character");
-const roleElement =
-    document.getElementById(
-        "role"
-    );
 
-const descriptionElement =
-    document.getElementById(
-        "description"
-    );
+        characters =
+        document.querySelectorAll(".character");
+        const roleElement =
+        document.getElementById(
+            "role"
+        );
 
-const hpElement =
-    document.getElementById(
-        "hp"
-    );
+        const descriptionElement =
+        document.getElementById(
+            "description"
+        );
 
-const atkElement =
-    document.getElementById(
-        "atk"
-    );
+        const hpElement =
+        document.getElementById(
+            "hp"
+        );
 
-const defElement =
-    document.getElementById(
-        "def"
-    );
+        const atkElement =
+        document.getElementById(
+            "atk"
+        );
+
+        const defElement =
+        document.getElementById(
+            "def"
+        );
 
 
-/* =========================
+        /* =========================
    UPDATE INFORMASI
 ========================= */
 
-function updateInfo(character) {
+        function updateInfo(character) {
 
-    roleElement.textContent =
-        character.dataset.role;
+            roleElement.textContent =
+            character.dataset.role;
 
-    descriptionElement.textContent =
-        character.dataset.description;
+            descriptionElement.textContent =
+            character.dataset.description;
 
-    hpElement.textContent =
-        character.dataset.hp;
+            hpElement.textContent =
+            character.dataset.hp;
 
-    atkElement.textContent =
-        character.dataset.atk;
+            atkElement.textContent =
+            character.dataset.atk;
 
-    defElement.textContent =
-        character.dataset.def;
-
-
-    const info =
-        document.getElementById(
-            "characterInfo"
-        );
-
-    info.style.animation = "none";
-
-    info.offsetHeight;
-
-    info.style.animation =
-        "fadeInfo 0.35s ease";
-}
+            defElement.textContent =
+            character.dataset.def;
 
 
-/* =========================
+            const info =
+            document.getElementById(
+                "characterInfo"
+            );
+
+            info.style.animation = "none";
+
+            info.offsetHeight;
+
+            info.style.animation =
+            "fadeInfo 0.35s ease";
+        }
+
+
+        /* =========================
    CARI KARAKTER DI TENGAH
 ========================= */
 
-function updateActive() {
-    
-    if (isLooping) return;
+        function updateActive() {
 
-    const center =
-        container.scrollLeft +
-        container.clientWidth / 2;
+            if (isLooping) return;
 
-    let closest = null;
-    let distance = Infinity;
+            const center =
+            container.scrollLeft +
+            container.clientWidth / 2;
 
-    characters.forEach(character => {
+            let closest = null;
+            let distance = Infinity;
 
-        const characterCenter =
-            character.offsetLeft +
-            character.offsetWidth / 2;
+            characters.forEach(character => {
 
-        const difference =
-            Math.abs(center - characterCenter);
+                const characterCenter =
+                character.offsetLeft +
+                character.offsetWidth / 2;
 
-        if (difference < distance) {
-            distance = difference;
-            closest = character;
+                const difference =
+                Math.abs(center - characterCenter);
+
+                if (difference < distance) {
+                    distance = difference;
+                    closest = character;
+                }
+            });
+
+            if (!closest) return;
+
+            const current =
+            container.querySelector(".character.active");
+
+            if (current === closest) return;
+
+            if (current) {
+                current.classList.remove("active");
+            }
+
+            closest.classList.add("active");
+
+            updateInfo(closest);
+            currentIndex = Array.from(characters).indexOf(closest);
         }
-    });
-
-    if (!closest) return;
-
-    const current =
-        container.querySelector(".character.active");
-
-    if (current === closest) return;
-
-    if (current) {
-        current.classList.remove("active");
-    }
-
-    closest.classList.add("active");
-
-    updateInfo(closest);
-    currentIndex = Array.from(characters).indexOf(closest);
-}
 
 
-/* =========================
+        /* =========================
    SWIPE
 ========================= */
+        function pastikanTengah(index) {
 
+            const character = characters[index];
 
-function centerCharacter(index, smooth = true) {
+            if (!character) return;
 
-    currentIndex = index;
-
-    const character = characters[index];
-
-    characters.forEach(c => {
-        c.classList.remove("active");
-    });
-
-    character.classList.add("active");
-
-    updateInfo(character);
-
-    requestAnimationFrame(() => {
-
-        const containerRect =
+            const containerRect =
             container.getBoundingClientRect();
 
-        const characterRect =
+            const characterRect =
             character.getBoundingClientRect();
 
-        const containerCenter =
+            const containerCenter =
             containerRect.left +
             containerRect.width / 2;
 
-        const characterCenter =
+            const characterCenter =
             characterRect.left +
             characterRect.width / 2;
 
-        const move =
+            container.scrollLeft +=
             characterCenter -
             containerCenter;
+        }
 
-        container.scrollTo({
-            left:
-                container.scrollLeft + move,
-            behavior: smooth ? "smooth" : "auto"
+        function centerCharacter(index, smooth = true) {
+
+            currentIndex = index;
+
+            const character = characters[index];
+
+            if (!character) return;
+
+            characters.forEach(c => {
+                c.classList.remove("active");
+            });
+
+            character.classList.add("active");
+
+            updateInfo(character);
+
+            requestAnimationFrame(() => {
+
+                const containerRect =
+                container.getBoundingClientRect();
+
+                const characterRect =
+                character.getBoundingClientRect();
+
+                const containerCenter =
+                containerRect.left +
+                containerRect.width / 2;
+
+                const characterCenter =
+                characterRect.left +
+                characterRect.width / 2;
+
+                const move =
+                characterCenter -
+                containerCenter;
+
+                container.scrollTo({
+                    left:
+                    container.scrollLeft + move,
+                    behavior:
+                    smooth ? "smooth": "auto"
+                });
+
+            });
+        }
+        let loopTimer = null;
+
+        container.addEventListener("scroll", () => {
+
+            if (isLooping) return;
+
+            requestAnimationFrame(updateActive);
+
+            clearTimeout(loopTimer);
+
+            loopTimer = setTimeout(() => {
+
+                if (currentIndex === 0) {
+
+                    isLooping = true;
+
+                    const target = characters[characters.length - 2];
+
+                    characters.forEach(c => {
+                        c.classList.add("no-transition");
+                        c.classList.remove("active");
+                    });
+
+                    target.classList.add("active");
+
+                    updateInfo(target);
+
+                    const containerRect =
+                    container.getBoundingClientRect();
+
+                    const targetRect =
+                    target.getBoundingClientRect();
+
+                    const move =
+                    targetRect.left +
+                    targetRect.width / 2 -
+                    (
+                        containerRect.left +
+                        containerRect.width / 2
+                    );
+
+                    container.scrollLeft += move;
+
+                    currentIndex =
+                    characters.length - 2;
+
+                    requestAnimationFrame(() => {
+
+                        characters.forEach(c => {
+                            c.classList.remove("no-transition");
+                        });
+
+                        isLooping = false;
+
+                    });
+
+                    return;
+                }
+
+
+                if (currentIndex === characters.length - 1) {
+
+                    isLooping = true;
+
+                    const target = characters[1];
+
+                    characters.forEach(c => {
+                        c.classList.add("no-transition");
+                        c.classList.remove("active");
+                    });
+
+                    target.classList.add("active");
+
+                    updateInfo(target);
+
+                    const containerRect =
+                    container.getBoundingClientRect();
+
+                    const targetRect =
+                    target.getBoundingClientRect();
+
+                    const move =
+                    targetRect.left +
+                    targetRect.width / 2 -
+                    (
+                        containerRect.left +
+                        containerRect.width / 2
+                    );
+
+                    container.scrollLeft += move;
+
+                    currentIndex = 1;
+
+                    requestAnimationFrame(() => {
+
+                        characters.forEach(c => {
+                            c.classList.remove("no-transition");
+                        });
+
+                        isLooping = false;
+
+                    });
+
+                }
+
+            },
+                120);
+
         });
 
-    });
-}
+        let currentIndex = 1;
+        let wheelBusy = false;
+        let isLooping = false;
 
-let loopTimer = null;
+        container.addEventListener("wheel", function(e) {
 
-container.addEventListener("scroll", () => {
+            if (
+                !document
+                .getElementById("karakter")
+                .classList
+                .contains("active")
+            ) {
+                return;
+            }
 
-    if (isLooping) return;
+            if (
+                Math.abs(e.deltaY) <=
+                Math.abs(e.deltaX)
+            ) {
+                return;
+            }
 
-    requestAnimationFrame(updateActive);
+            e.preventDefault();
 
-    clearTimeout(loopTimer);
+            if (wheelBusy) return;
 
-    loopTimer = setTimeout(() => {
+            wheelBusy = true;
 
-        if (currentIndex === 0) {
+            if (e.deltaY > 0) {
+                centerCharacter(currentIndex + 1);
+            } else {
+                centerCharacter(currentIndex - 1);
+            }
 
-            isLooping = true;
+            setTimeout(() => {
+                wheelBusy = false;
+            }, 250);
 
-            const target = characters[characters.length - 2];
-
-            characters.forEach(c => {
-                c.classList.add("no-transition");
-                c.classList.remove("active");
-            });
-
-            target.classList.add("active");
-
-            updateInfo(target);
-
-            const containerRect =
-                container.getBoundingClientRect();
-
-            const targetRect =
-                target.getBoundingClientRect();
-
-            const move =
-                targetRect.left +
-                targetRect.width / 2 -
-                (
-                    containerRect.left +
-                    containerRect.width / 2
-                );
-
-            container.scrollLeft += move;
-
-            currentIndex =
-                characters.length - 2;
-
-            requestAnimationFrame(() => {
-
-                characters.forEach(c => {
-                    c.classList.remove("no-transition");
-                });
-
-                isLooping = false;
-
-            });
-
-            return;
-        }
-
-
-        if (currentIndex === characters.length - 1) {
-
-            isLooping = true;
-
-            const target = characters[1];
-
-            characters.forEach(c => {
-                c.classList.add("no-transition");
-                c.classList.remove("active");
-            });
-
-            target.classList.add("active");
-
-            updateInfo(target);
-
-            const containerRect =
-                container.getBoundingClientRect();
-
-            const targetRect =
-                target.getBoundingClientRect();
-
-            const move =
-                targetRect.left +
-                targetRect.width / 2 -
-                (
-                    containerRect.left +
-                    containerRect.width / 2
-                );
-
-            container.scrollLeft += move;
-
-            currentIndex = 1;
-
-            requestAnimationFrame(() => {
-
-                characters.forEach(c => {
-                    c.classList.remove("no-transition");
-                });
-
-                isLooping = false;
-
-            });
-
-        }
-
-    }, 120);
-
-});
-
-let currentIndex = 1;
-let wheelBusy = false;
-let isLooping = false;
-
-container.addEventListener("wheel", function(e) {
-
-    if (
-        !document
-            .getElementById("karakter")
-            .classList
-            .contains("active")
-    ) {
-        return;
-    }
-
-    if (
-        Math.abs(e.deltaY) <=
-        Math.abs(e.deltaX)
-    ) {
-        return;
-    }
-
-    e.preventDefault();
-
-    if (wheelBusy) return;
-
-    wheelBusy = true;
-
-    if (e.deltaY > 0) {
-        centerCharacter(currentIndex + 1);
-    } else {
-        centerCharacter(currentIndex - 1);
-    }
-
-    setTimeout(() => {
-        wheelBusy = false;
-    }, 250);
-
-}, {
-    passive: false
-});
-/* =========================
+        }, {
+            passive: false
+        });
+        /* =========================
    PILIH
 ========================= */
 
-function pilihKarakter() {
+        function pilihKarakter() {
 
-    const active =
-        document.querySelector(
-            ".character.active"
-        );
+            const active =
+            document.querySelector(
+                ".character.active"
+            );
 
-    if (!active) return;
-
-
-    document.getElementById(
-        "storyName"
-    ).textContent =
-        active.dataset.name;
+            if (!active) return;
 
 
-    document.getElementById(
-        "storyRole"
-    ).textContent =
-        active.dataset.role;
+            document.getElementById(
+                "storyName"
+            ).textContent =
+            active.dataset.name;
 
 
-    document.getElementById(
-        "storyText"
-    ).textContent =
-        active.dataset.story ||
-        "Belum ada sejarah karakter.";
+            document.getElementById(
+                "storyRole"
+            ).textContent =
+            active.dataset.role;
 
 
-    document.getElementById(
-        "storyOverlay"
-    ).style.display =
-        "flex";
-}
-
-function tutupSejarah() {
-
-    const story =
-        document.getElementById("storyOverlay");
-
-    story.style.animation =
-        "storyFadeOut 0.4s ease";
-
-    setTimeout(() => {
-
-        story.style.display = "none";
-
-        story.style.animation =
-            "storyFade 0.4s ease";
-
-    }, 400);
-
-}
-
-const dots = document.getElementById("loadingDots");
-
-let dotCount = 1;
-
-const loadingAnimation = setInterval(() => {
-
-    dotCount++;
-
-    if (dotCount > 3) {
-        dotCount = 1;
-    }
-
-    dots.textContent = ".".repeat(dotCount);
-
-}, 400);
+            document.getElementById(
+                "storyText"
+            ).textContent =
+            active.dataset.story ||
+            "Belum ada sejarah karakter.";
 
 
-window.addEventListener("load", () => {
+            document.getElementById(
+                "storyOverlay"
+            ).style.display =
+            "flex";
+        }
 
-    clearInterval(loadingAnimation);
+        function tutupSejarah() {
 
-    setTimeout(() => {
-        document.getElementById("loader")
-            .classList.add("hide");
-    }, 300);
+            const story =
+            document.getElementById("storyOverlay");
 
-});
+            story.style.animation =
+            "storyFadeOut 0.4s ease";
 
-</script>
-<audio id="clickSound" src="click.mp3" preload="auto"></audio>
+            setTimeout(() => {
+
+                story.style.display = "none";
+
+                story.style.animation =
+                "storyFade 0.4s ease";
+
+            }, 400);
+
+        }
+
+        const dots = document.getElementById("loadingDots");
+
+        let dotCount = 1;
+
+        const loadingAnimation = setInterval(() => {
+
+            dotCount++;
+
+            if (dotCount > 3) {
+                dotCount = 1;
+            }
+
+            dots.textContent = ".".repeat(dotCount);
+
+        }, 400);
+
+
+        window.addEventListener("load", () => {
+
+            clearInterval(loadingAnimation);
+
+            setTimeout(() => {
+                document.getElementById("loader")
+                .classList.add("hide");
+            }, 300);
+
+        });
+
+    </script>
+    <audio id="clickSound" src="click.mp3" preload="auto"></audio>
 </body>
 </html>
