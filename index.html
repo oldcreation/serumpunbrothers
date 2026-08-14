@@ -1358,6 +1358,38 @@
                 </div>
                 <div class="character-image">
 
+                    <img src="img/text.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Krislaw
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Tank"
+                data-role="Defender"
+                data-description="Pelindung tim dengan pertahanan luar biasa dan HP yang sangat tinggi."
+                data-hp="100"
+                data-atk="60"
+                data-def="100"
+                data-story="kaitu haja jua"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
                     <img src="img/krisna.webp">
 
                 </div>
@@ -1672,11 +1704,9 @@ function showPage(id) {
 
         if (id === "karakter") {
 
-            setTimeout(() => {
-                centerCharacter(0, false);
-            }, 50);
+    centerCharacter(currentIndex, false);
 
-        }
+}
 
     }, 500);
 }
@@ -1694,7 +1724,7 @@ container.querySelectorAll(".character");
 
 let currentIndex = 5;  /*mulaidri*/
 let wheelBusy = false;
-
+let isMovingCharacter = false;
 
 /* =========================
    INFO
@@ -1760,9 +1790,9 @@ function centerCharacter(index, smooth = true) {
     }
 
     currentIndex = index;
+    isMovingCharacter = true;
 
-    const character =
-    characters[index];
+    const character = characters[index];
 
     if (!character) return;
 
@@ -1803,6 +1833,10 @@ function centerCharacter(index, smooth = true) {
         });
 
     });
+
+    setTimeout(() => {
+        isMovingCharacter = false;
+    }, smooth ? 350 : 0);
 }
 
 
@@ -1954,6 +1988,8 @@ container.addEventListener(
 container.addEventListener(
     "scroll",
     () => {
+
+        if (isMovingCharacter) return;
 
         requestAnimationFrame(
             updateActive
