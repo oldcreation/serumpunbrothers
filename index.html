@@ -1468,8 +1468,8 @@
 
 
         <!-- =========================
-                     INFORMASI KARAKTER
-                ========================= -->
+                             INFORMASI KARAKTER
+                        ========================= -->
 
         <div
             class="character-info"
@@ -1554,7 +1554,7 @@
             KEMBALI
         </button>
         <!-- pemilihan karakter kamu
-                             dimasukkan di sini -->
+                                     dimasukkan di sini -->
 
     </section>
 
@@ -1576,8 +1576,8 @@
 
 
     <!-- =========================
-             SEJARAH KARAKTER
-        ========================= -->
+                 SEJARAH KARAKTER
+            ========================= -->
 
     <div
         class="story-overlay"
@@ -1620,547 +1620,457 @@
 
     </div>
 
-    <script>
-        function bukaGaleri(card) {
+  <script>
+function bukaGaleri(card) {
 
-            document.getElementById(
-                "galleryDetailTitle"
-            ).textContent =
-            card.dataset.title;
+    document.getElementById("galleryDetailTitle").textContent =
+    card.dataset.title;
 
-            document.getElementById(
-                "galleryDetailText"
-            ).textContent =
-            card.dataset.description;
+    document.getElementById("galleryDetailText").textContent =
+    card.dataset.description;
 
-            document.getElementById(
-                "galleryOverlay"
-            ).style.display =
-            "flex";
-        }
+    document.getElementById("galleryOverlay").style.display =
+    "flex";
+}
 
 
-        function tutupGaleri() {
+function tutupGaleri() {
 
-            const gallery =
-            document.getElementById("galleryOverlay");
+    const gallery =
+    document.getElementById("galleryOverlay");
 
-            gallery.style.animation =
-            "storyFadeOut 0.4s ease";
+    gallery.style.animation =
+    "storyFadeOut 0.4s ease";
 
-            setTimeout(() => {
+    setTimeout(() => {
 
-                gallery.style.display = "none";
+        gallery.style.display = "none";
+        gallery.style.animation =
+        "storyFade 0.4s ease";
 
-                gallery.style.animation =
-                "storyFade 0.4s ease";
-
-            }, 400);
-        }
-        function showPage(id) {
-
-            const current =
-            document.querySelector(
-                ".page.active, #intro.active"
-            );
-
-            const next =
-            document.getElementById(id);
-
-            if (!next || current === next) return;
+    }, 400);
+}
 
 
-            /* FADE OUT */
+function showPage(id) {
 
-            if (current) {
-                current.classList.remove("active");
-            }
+    const current =
+    document.querySelector(".page.active, #intro.active");
 
+    const next =
+    document.getElementById(id);
 
-            /* Tunggu fade-out selesai */
+    if (!next || current === next) return;
+
+    if (current) {
+        current.classList.remove("active");
+    }
+
+    setTimeout(() => {
+
+        next.classList.add("active");
+
+        if (id === "karakter") {
 
             setTimeout(() => {
+                centerCharacter(0, false);
+            }, 50);
 
-                next.classList.add("active");
-
-                if (id === "karakter") {
-
-                    setTimeout(() => {
-
-                       const totalCharacter =
-originalCharacters.length;
-
-const middleStart =
-totalCharacter;
-
-const randomIndex =
-middleStart +
-Math.floor(Math.random() * totalCharacter);
-
-centerCharacter(randomIndex, false);
-
-                        centerCharacter(randomIndex, false);
-
-                    }, 50);
-
-                }
-            },
-                500);
         }
-        const container =
-        document.getElementById(
-            "characters"
+
+    }, 500);
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+const container =
+document.getElementById("characters");
+
+let characters =
+container.querySelectorAll(".character");
+
+let currentIndex = 5;  /*mulaidri*/
+let wheelBusy = false;
+
+
+/* =========================
+   INFO
+========================= */
+
+const roleElement =
+document.getElementById("role");
+
+const descriptionElement =
+document.getElementById("description");
+
+const hpElement =
+document.getElementById("hp");
+
+const atkElement =
+document.getElementById("atk");
+
+const defElement =
+document.getElementById("def");
+
+
+function updateInfo(character) {
+
+    roleElement.textContent =
+    character.dataset.role;
+
+    descriptionElement.textContent =
+    character.dataset.description;
+
+    hpElement.textContent =
+    character.dataset.hp;
+
+    atkElement.textContent =
+    character.dataset.atk;
+
+    defElement.textContent =
+    character.dataset.def;
+
+
+    const info =
+    document.getElementById("characterInfo");
+
+    info.style.animation = "none";
+
+    info.offsetHeight;
+
+    info.style.animation =
+    "fadeInfo 0.35s ease";
+}
+
+
+/* =========================
+   CENTER
+========================= */
+
+function centerCharacter(index, smooth = true) {
+
+    if (
+        index < 0 ||
+        index >= characters.length
+    ) {
+        return;
+    }
+
+    currentIndex = index;
+
+    const character =
+    characters[index];
+
+    if (!character) return;
+
+    characters.forEach(c => {
+        c.classList.remove("active");
+    });
+
+    character.classList.add("active");
+
+    updateInfo(character);
+
+    requestAnimationFrame(() => {
+
+        const containerRect =
+        container.getBoundingClientRect();
+
+        const characterRect =
+        character.getBoundingClientRect();
+
+        const containerCenter =
+        containerRect.left +
+        containerRect.width / 2;
+
+        const characterCenter =
+        characterRect.left +
+        characterRect.width / 2;
+
+        container.scrollTo({
+
+            left:
+            container.scrollLeft +
+            characterCenter -
+            containerCenter,
+
+            behavior:
+            smooth ? "smooth" : "auto"
+
+        });
+
+    });
+}
+
+
+/* =========================
+   CARI ACTIVE
+========================= */
+
+function updateActive() {
+
+    const center =
+    container.scrollLeft +
+    container.clientWidth / 2;
+
+    let closest = null;
+    let distance = Infinity;
+
+    characters.forEach(character => {
+
+        const characterCenter =
+        character.offsetLeft +
+        character.offsetWidth / 2;
+
+        const difference =
+        Math.abs(
+            center - characterCenter
         );
 
-        let characters =
-        document.querySelectorAll(".character");
+        if (difference < distance) {
 
-        const originalCharacters =
-    Array.from(
-        document.querySelectorAll(".character")
-    );
+            distance = difference;
+            closest = character;
 
-container.innerHTML = "";
-
-for (let group = 0; group < 3; group++) {
-
-    originalCharacters.forEach(character => {
-
-        const clone =
-            character.cloneNode(true);
-
-        container.appendChild(clone);
+        }
 
     });
 
+    if (!closest) return;
+
+    const current =
+    container.querySelector(".character.active");
+
+    if (current === closest) return;
+
+    if (current) {
+        current.classList.remove("active");
+    }
+
+    closest.classList.add("active");
+
+    updateInfo(closest);
+
+    currentIndex =
+    Array.from(characters).indexOf(closest);
 }
 
-characters =
-    document.querySelectorAll(".character");
 
-        characters =
-        document.querySelectorAll(".character");
-        const roleElement =
-        document.getElementById(
-            "role"
-        );
-
-        const descriptionElement =
-        document.getElementById(
-            "description"
-        );
-
-        const hpElement =
-        document.getElementById(
-            "hp"
-        );
-
-        const atkElement =
-        document.getElementById(
-            "atk"
-        );
-
-        const defElement =
-        document.getElementById(
-            "def"
-        );
-
-
-        /* =========================
-   UPDATE INFORMASI
+/* =========================
+   WHEEL
+   TANPA LOOPING
 ========================= */
 
-        function updateInfo(character) {
+container.addEventListener(
+    "wheel",
+    function(e) {
 
-            roleElement.textContent =
-            character.dataset.role;
-
-            descriptionElement.textContent =
-            character.dataset.description;
-
-            hpElement.textContent =
-            character.dataset.hp;
-
-            atkElement.textContent =
-            character.dataset.atk;
-
-            defElement.textContent =
-            character.dataset.def;
-
-
-            const info =
-            document.getElementById(
-                "characterInfo"
-            );
-
-            info.style.animation = "none";
-
-            info.offsetHeight;
-
-            info.style.animation =
-            "fadeInfo 0.35s ease";
+        if (
+            !document
+            .getElementById("karakter")
+            .classList
+            .contains("active")
+        ) {
+            return;
         }
 
 
-        /* =========================
-   CARI KARAKTER DI TENGAH
-========================= */
-
-        function updateActive() {
-
-            if (isLooping) return;
-
-            const center =
-            container.scrollLeft +
-            container.clientWidth / 2;
-
-            let closest = null;
-            let distance = Infinity;
-
-            characters.forEach(character => {
-
-                const characterCenter =
-                character.offsetLeft +
-                character.offsetWidth / 2;
-
-                const difference =
-                Math.abs(center - characterCenter);
-
-                if (difference < distance) {
-                    distance = difference;
-                    closest = character;
-                }
-            });
-
-            if (!closest) return;
-
-            const current =
-            container.querySelector(".character.active");
-
-            if (current === closest) return;
-
-            if (current) {
-                current.classList.remove("active");
-            }
-
-            closest.classList.add("active");
-
-            updateInfo(closest);
-            currentIndex = Array.from(characters).indexOf(closest);
+        if (
+            Math.abs(e.deltaY) <=
+            Math.abs(e.deltaX)
+        ) {
+            return;
         }
 
 
-        /* =========================
-   SWIPE
-========================= */
-        function pastikanTengah(index) {
+        e.preventDefault();
 
-            const character = characters[index];
 
-            if (!character) return;
+        if (wheelBusy) return;
 
-            const containerRect =
-            container.getBoundingClientRect();
+        wheelBusy = true;
 
-            const characterRect =
-            character.getBoundingClientRect();
 
-            const containerCenter =
-            containerRect.left +
-            containerRect.width / 2;
+        if (e.deltaY > 0) {
 
-            const characterCenter =
-            characterRect.left +
-            characterRect.width / 2;
-
-            container.scrollLeft +=
-            characterCenter -
-            containerCenter;
-        }
-
-        function centerCharacter(index, smooth = true) {
-
-            currentIndex = index;
-
-            const character = characters[index];
-
-            if (!character) return;
-
-            characters.forEach(c => {
-                c.classList.remove("active");
-            });
-
-            character.classList.add("active");
-
-            updateInfo(character);
-
-            requestAnimationFrame(() => {
-
-                const containerRect =
-                container.getBoundingClientRect();
-
-                const characterRect =
-                character.getBoundingClientRect();
-
-                const containerCenter =
-                containerRect.left +
-                containerRect.width / 2;
-
-                const characterCenter =
-                characterRect.left +
-                characterRect.width / 2;
-
-                const move =
-                characterCenter -
-                containerCenter;
-
-                container.scrollTo({
-                    left:
-                    container.scrollLeft + move,
-                    behavior:
-                    smooth ? "smooth": "auto"
-                });
-
-            });
-        }
-        let loopTimer = null;
-
-        container.addEventListener("scroll", () => {
-
-            if (isLooping) return;
-
-            requestAnimationFrame(updateActive);
-
-            clearTimeout(loopTimer);
-
-            loopTimer = setTimeout(() => {
-
-                if (currentIndex === 0) {
-
-                    isLooping = true;
-
-                    const target = characters[characters.length - 2];
-
-                    characters.forEach(c => {
-                        c.classList.add("no-transition");
-                        c.classList.remove("active");
-                    });
-
-                    target.classList.add("active");
-
-                    updateInfo(target);
-
-                    const containerRect =
-                    container.getBoundingClientRect();
-
-                    const targetRect =
-                    target.getBoundingClientRect();
-
-                    const move =
-                    targetRect.left +
-                    targetRect.width / 2 -
-                    (
-                        containerRect.left +
-                        containerRect.width / 2
-                    );
-
-                    container.scrollLeft += move;
-
-                    currentIndex =
-                    characters.length - 2;
-
-                    requestAnimationFrame(() => {
-
-                        characters.forEach(c => {
-                            c.classList.remove("no-transition");
-                        });
-
-                        isLooping = false;
-
-                    });
-
-                    return;
-                }
-
-
-                if (currentIndex === characters.length - 1) {
-
-                    isLooping = true;
-
-                    const target = characters[1];
-
-                    characters.forEach(c => {
-                        c.classList.add("no-transition");
-                        c.classList.remove("active");
-                    });
-
-                    target.classList.add("active");
-
-                    updateInfo(target);
-
-                    const containerRect =
-                    container.getBoundingClientRect();
-
-                    const targetRect =
-                    target.getBoundingClientRect();
-
-                    const move =
-                    targetRect.left +
-                    targetRect.width / 2 -
-                    (
-                        containerRect.left +
-                        containerRect.width / 2
-                    );
-
-                    container.scrollLeft += move;
-
-                    currentIndex = 1;
-
-                    requestAnimationFrame(() => {
-
-                        characters.forEach(c => {
-                            c.classList.remove("no-transition");
-                        });
-
-                        isLooping = false;
-
-                    });
-
-                }
-
-            },
-                120);
-
-        });
-
-        let currentIndex = 1;
-        let wheelBusy = false;
-        let isLooping = false;
-
-        container.addEventListener("wheel", function(e) {
+            /*
+               Gerak ke kanan.
+               Jika sudah karakter terakhir,
+               tidak melakukan apa-apa.
+            */
 
             if (
-                !document
-                .getElementById("karakter")
-                .classList
-                .contains("active")
+                currentIndex <
+                characters.length - 1
             ) {
-                return;
+
+                centerCharacter(
+                    currentIndex + 1
+                );
+
             }
 
-            if (
-                Math.abs(e.deltaY) <=
-                Math.abs(e.deltaX)
-            ) {
-                return;
+        }
+
+        else {
+
+            /*
+               Gerak ke kiri.
+               Jika sudah karakter pertama,
+               tidak melakukan apa-apa.
+            */
+
+            if (currentIndex > 0) {
+
+                centerCharacter(
+                    currentIndex - 1
+                );
+
             }
 
-            e.preventDefault();
+        }
 
-            if (wheelBusy) return;
 
-            wheelBusy = true;
+        setTimeout(() => {
 
-            if (e.deltaY > 0) {
-                centerCharacter(currentIndex + 1);
-            } else {
-                centerCharacter(currentIndex - 1);
-            }
+            wheelBusy = false;
 
-            setTimeout(() => {
-                wheelBusy = false;
-            }, 250);
+        }, 350);
 
-        }, {
-            passive: false
-        });
-        /* =========================
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================
+   SCROLL
+========================= */
+
+container.addEventListener(
+    "scroll",
+    () => {
+
+        requestAnimationFrame(
+            updateActive
+        );
+
+    }
+);
+
+
+/* =========================
    PILIH
 ========================= */
 
-        function pilihKarakter() {
+function pilihKarakter() {
 
-            const active =
-            document.querySelector(
-                ".character.active"
-            );
+    const active =
+    document.querySelector(
+        ".character.active"
+    );
 
-            if (!active) return;
-
-
-            document.getElementById(
-                "storyName"
-            ).textContent =
-            active.dataset.name;
+    if (!active) return;
 
 
-            document.getElementById(
-                "storyRole"
-            ).textContent =
-            active.dataset.role;
+    document.getElementById(
+        "storyName"
+    ).textContent =
+    active.dataset.name;
 
 
-            document.getElementById(
-                "storyText"
-            ).textContent =
-            active.dataset.story ||
-            "Belum ada sejarah karakter.";
+    document.getElementById(
+        "storyRole"
+    ).textContent =
+    active.dataset.role;
 
 
-            document.getElementById(
-                "storyOverlay"
-            ).style.display =
-            "flex";
-        }
-
-        function tutupSejarah() {
-
-            const story =
-            document.getElementById("storyOverlay");
-
-            story.style.animation =
-            "storyFadeOut 0.4s ease";
-
-            setTimeout(() => {
-
-                story.style.display = "none";
-
-                story.style.animation =
-                "storyFade 0.4s ease";
-
-            }, 400);
-
-        }
-
-        const dots = document.getElementById("loadingDots");
-
-        let dotCount = 1;
-
-        const loadingAnimation = setInterval(() => {
-
-            dotCount++;
-
-            if (dotCount > 3) {
-                dotCount = 1;
-            }
-
-            dots.textContent = ".".repeat(dotCount);
-
-        }, 400);
+    document.getElementById(
+        "storyText"
+    ).textContent =
+    active.dataset.story ||
+    "Belum ada sejarah karakter.";
 
 
-        window.addEventListener("load", () => {
+    document.getElementById(
+        "storyOverlay"
+    ).style.display =
+    "flex";
+}
 
-            clearInterval(loadingAnimation);
 
-            setTimeout(() => {
-                document.getElementById("loader")
-                .classList.add("hide");
-            }, 300);
+function tutupSejarah() {
 
-        });
+    const story =
+    document.getElementById(
+        "storyOverlay"
+    );
 
-    </script>
+    story.style.animation =
+    "storyFadeOut 0.4s ease";
+
+    setTimeout(() => {
+
+        story.style.display =
+        "none";
+
+        story.style.animation =
+        "storyFade 0.4s ease";
+
+    }, 400);
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+const dots =
+document.getElementById(
+    "loadingDots"
+);
+
+let dotCount = 1;
+
+const loadingAnimation =
+setInterval(() => {
+
+    dotCount++;
+
+    if (dotCount > 3) {
+        dotCount = 1;
+    }
+
+    dots.textContent =
+    ".".repeat(dotCount);
+
+}, 400);
+
+
+window.addEventListener(
+    "load",
+    () => {
+
+        clearInterval(
+            loadingAnimation
+        );
+
+        setTimeout(() => {
+
+            document
+            .getElementById("loader")
+            .classList
+            .add("hide");
+
+        }, 300);
+
+    }
+);
+</script>
     <audio id="clickSound" src="click.mp3" preload="auto"></audio>
 </body>
 </html>
