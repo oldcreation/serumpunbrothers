@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Lilex:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Elms+Sans:wght@400;500;600;700&family=Fresca&display=swap" rel="stylesheet">
     <title>Serumpun Brothers</title>
 
     <style>
@@ -16,14 +16,14 @@
             margin: 0;
             min-height: 100vh;
 
-            background:#222;
+            background:url("img/latar.webp")center center / cover no-repeat fixed;
             
             /*
+        
     url("img/latar.webp")center center / cover no-repeat fixed;
     */
             color: white;
-
-            font-family: "Lilex", sans-serif;
+font-family: 'Elms Sans', sans-serif;
 
             display: flex;
             flex-direction: column;
@@ -38,9 +38,9 @@
    JUDUL
 ========================= */
 
-        h1 {
+        h1,h2,h3,p {
             margin: 0 0 20px;
-
+            font-family: 'Elms Sans', sans-serif;
             font-size: 42px;
 
             text-align: center;
@@ -245,7 +245,8 @@
 
         .character-name {
             position: absolute;
-
+            font-family: 'Caveat', cursive;
+            
             left: -2px;
             right: -2px;
 
@@ -253,7 +254,7 @@
 
             height: 62px;
 
-            background: #222;
+            background: #22222271;
 
             border: 2px solid #444;
 
@@ -264,7 +265,7 @@
             align-items: center;
             justify-content: center;
 
-            font-size: 19px;
+            font-size: 30px;
             font-weight: bold;
 
             z-index: 50;
@@ -295,16 +296,18 @@
 ========================= */
 
         .character-info {
-            width: 90%;
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px;
+    text-align: center;
+    opacity: 1;
+    transform: translateY(0);
+    
+}
 
-            max-width: 600px;
-
-            margin-top: 20px;
-
-            text-align: center;
-
-            animation: fadeInfo 0.35s ease;
-        }
+.character-info.info-animate {
+    animation: fadeInfo 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
         .role {
             margin-top: 5px;
@@ -315,6 +318,7 @@
             letter-spacing: 2px;
         }
         .description {
+            
             margin-top: 12px;
 
             color: #ccc;
@@ -367,6 +371,7 @@
 ========================= */
 
         button {
+            font-family: 'Caveat', cursive;
             margin-top: 20px;
 
             padding: 12px 35px;
@@ -406,6 +411,7 @@
 
         .menu-button {
             width: 200px;
+            font-family: 'Caveat', cursive;
         }
 
         /* =========================
@@ -414,17 +420,24 @@
 
         @keyframes fadeInfo {
 
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+        filter: blur(6px);
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+    60% {
+        opacity: 0.8;
+        filter: blur(2px);
+    }
 
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
+}
 
         /* =========================
    HILANGKAN GLITCH / FLASH BIRU
@@ -475,7 +488,7 @@
         .story-panel {
             width: 100%;
             max-width: 550px;
-
+            font-family: 'Fresca', sans-serif;
             background: transparent;
 
             border: none;
@@ -497,6 +510,8 @@
 
         .story-character {
             display: none;
+             
+    
         }
 
 
@@ -506,7 +521,7 @@
 
         .story-name {
             font-size: 36px;
-
+            
             font-weight: bold;
 
             color: white;
@@ -661,7 +676,9 @@
         #loadingDots {
             width: 60px;
             text-align: left;
+        
         }
+        
         .menu-content {
             width: 90%;
             max-width: 600px;
@@ -670,8 +687,6 @@
 
             text-align: center;
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
 
             border-radius: 25px;
 
@@ -680,9 +695,13 @@
 
         .menu-content h1 {
             margin: 0 0 15px;
+             
+    
         }
 
         .menu-content p {
+             
+    
             margin: 0;
 
             color: white;
@@ -903,7 +922,8 @@
 
     <!-- INTRO -->
     <section id="intro" class="active">
-        <h1>SERUMPUN<br>BROTHERS</h1>
+        <h1 style="font-family: 'Caveat', cursive; 
+    ">SERUMPUN<br>BROTHERS</h1>
         <button onclick="showPage('home')">START</button>
     </section>
 
@@ -1665,11 +1685,20 @@
         <div class="menu-content">
             <h1>SUMBER</h1>
             <p>
-                IG<br>
-                @canostfightermuaythai<br>
-                @serumpunbrothers<br>
-                @cfm_behantman
+                IG
             </p>
+            <button style="font-family: 'Elms Sans', sans-serif;" conclick="window.location.href='https://www.instagram.com/canostfightermuaythai/';">
+    canostfightermuaythai
+</button>
+<br>
+<button style="font-family: 'Elms Sans', sans-serif;" onclick="window.location.href='https://www.instagram.com/cfm_behantaman/';">
+    cfm_behantaman
+</button>
+<br>
+<button style="font-family: 'Elms Sans', sans-serif;" onclick="window.location.href='https://www.instagram.com/serumpunbrothers/';">
+    serumpunbrothers
+</button><br><br>
+            
             <!-- isi event -->
 
             <button onclick="showPage('home')">
@@ -1820,6 +1849,16 @@ document.getElementById("def");
 
 function updateInfo(character) {
 
+    const info =
+    document.getElementById("characterInfo");
+
+    /* Matikan animasi sementara */
+    info.classList.remove("info-animate");
+
+    /* Paksa browser menyelesaikan perubahan */
+    void info.offsetWidth;
+
+    /* Ganti isi terlebih dahulu */
     roleElement.textContent =
     character.dataset.role;
 
@@ -1835,16 +1874,10 @@ function updateInfo(character) {
     defElement.textContent =
     character.dataset.def;
 
-
-    const info =
-    document.getElementById("characterInfo");
-
-    info.style.animation = "none";
-
-    info.offsetHeight;
-
-    info.style.animation =
-    "fadeInfo 0.35s ease";
+    /* Jalankan animasi setelah isi berubah */
+    requestAnimationFrame(() => {
+        info.classList.add("info-animate");
+    });
 }
 
 
@@ -1959,7 +1992,7 @@ function updateActive() {
     }
 
     closest.classList.add("active");
-
+    playClick();
     updateInfo(closest);
 
     currentIndex =
