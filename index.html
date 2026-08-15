@@ -193,17 +193,17 @@
             top: 0;
             left: 0;
             right: 0;
-            bottom: 60px;
+            bottom: 0px;
 
             overflow: hidden;
 
-            border-radius: 18px 18px 0 0;
+            border-radius: 18px 18px;
 
             z-index: 1;
         }
         .character-bg {
             position: absolute;
-
+            
             inset: 0px;
 
             background-size: cover;
@@ -878,7 +878,7 @@
             #galeri .gallery-card {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 16 / 10;
+                aspect-ratio: 10 / 10;
 
                 min-height: 0;
             }
@@ -909,7 +909,6 @@
 
     <!-- HOME -->
     <section id="home" class="page">
-
         <img src="img/logo.webp" alt="" width="200px" height="200px">
 
         <button class="menu-button" onclick="showPage('event')">
@@ -919,20 +918,18 @@
         <button class="menu-button" onclick="showPage('galeri')">
             GALERI
         </button>
-
+<button class="menu-button" onclick="showPage('book')">
+    COACH
+</button>
         <button class="menu-button" onclick="showPage('karakter')">
             KARAKTER
-        </button>
-
-        <button class="menu-button" onclick="showPage('karakter2')">
-            COACH
         </button>
 
         <button class="menu-button" onclick="showPage('lain')">
             SOSMED
         </button>
-
     </section>
+
 
     <!-- EVENT -->
     <section id="event" class="page">
@@ -961,7 +958,7 @@
                 onclick="bukaGaleri(this)"
                 data-title="Meraung"
                 data-description="Acara Meraung menjadi salah satu momen yang menunjukkan betapa solidnya Serumpun Brothers, dengan semangat kebersamaan, kekompakan, dan dukungan yang luar biasa. Dari persiapan hingga acara berlangsung, semuanya terasa lebih seru karena dijalani bersama, saling mendukung, dan menikmati setiap momen yang tercipta. Bukan hanya tentang sebuah acara, tetapi juga tentang persaudaraan, kekuatan tim, dan kebersamaan yang membuat Meraung menjadi momen yang begitu berkesan.
-                "
+"
                 >
 
                 <div class="gallery-image">
@@ -978,17 +975,17 @@
                 class="gallery-card"
                 onclick="bukaGaleri(this)"
                 data-title="Porprov XII Muaythai"
-                data-description="Porprov XII Muaythai di Tanah
-                Bumbu, Kalimantan Selatan, menjadi momen yang penuh
-                semangat, adrenalin, dan kebersamaan bagi Serumpun
+                data-description="Porprov XII Muaythai di Tanah 
+                Bumbu, Kalimantan Selatan, menjadi momen yang penuh 
+                semangat, adrenalin, dan kebersamaan bagi Serumpun 
                 Brothers. Turut berpartisipasi dalam ajang ini, kami
-                merasakan langsung serunya atmosfer pertandingan,
-                perjuangan para atlet, sorakan penonton, serta
-                semangat sportivitas yang begitu kuat. Bukan sekadar
-                tentang menang dan kalah, momen ini menjadi pengalaman
-                berharga untuk membangun kebersamaan, menikmati
-                setiap proses, dan menciptakan cerita yang tak
-                terlupakan bersama."
+                 merasakan langsung serunya atmosfer pertandingan, 
+                 perjuangan para atlet, sorakan penonton, serta 
+                 semangat sportivitas yang begitu kuat. Bukan sekadar 
+                 tentang menang dan kalah, momen ini menjadi pengalaman 
+                 berharga untuk membangun kebersamaan, menikmati 
+                 setiap proses, dan menciptakan cerita yang tak 
+                 terlupakan bersama."
                 >
 
                 <div class="gallery-image">
@@ -1007,7 +1004,7 @@
                 onclick="bukaGaleri(this)"
                 data-title="Ramadhan"
                 data-description="Momen Ramadhan menjadi waktu yang begitu berkesan bagi Serumpun Brothers, ketika kami kembali berkumpul, berbagi cerita, bercanda, dan menikmati kebersamaan setelah menjalani kesibukan masing-masing. Suasana sederhana namun penuh kehangatan membuat setiap pertemuan terasa begitu berarti, seolah kembali menghidupkan rasa persaudaraan dan kenangan lama. Ramadhan bukan hanya tentang menahan lapar dan dahaga, tetapi juga tentang kembali bersama, mempererat silaturahmi, dan menciptakan momen-momen indah yang akan selalu dikenang.
-                "
+"
                 >
 
                 <div class="gallery-image">
@@ -1057,431 +1054,51 @@
         </button>
     </section>
 
+<!-- BOOK -->
+<section id="book" class="page">
 
-    <!-- KARAKTER -->
-    <!-- =========================
-             KARAKTER 1
-        ========================= -->
+    <h1>Pilih Book</h1>
 
-    <section id="karakter" class="page">
+    <div
+        class="character-container"
+        id="books"
+    >
 
-        <h1>Serumpun</h1>
-
+        <!-- BOOK 1 -->
         <div
-            class="character-container"
-            id="characters"
-            >
+            class="character active"
 
-            <!-- OMAN -->
-
-            <div
-                class="character active"
-                data-name="OMAN"
-                data-role="THE K-TOWN BOYS"
-                data-description="Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar."
-                data-hp="95"
-                data-atk="85"
-                data-def="90"
-                data-story="Memiliki gaya bertarung yang bertolak belakang dengan bakat alaminya yang langka, selalu tampil santai seolah tidak perlu mengerahkan seluruh kemampuannya untuk memenangkan pertarungan."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/oman.webp">
-                </div>
-
-                <div class="character-name">
-                    Oman
-                </div>
-
-            </div>
-
-
-            <!-- GIDEON -->
-
-            <div
-                class="character"
-                data-name="Gideon Alduk"
-                data-role="Mage"
-                data-description="Memiliki jurus mematikan, ledakan api yang membara & suka friendly fire."
-                data-hp="50"
-                data-atk="100"
-                data-def="30"
-                data-story="Ampunnya Alalak Selatan, penjagaunya Handil, p info gladiator."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/aldi.webp">
-                </div>
-
-                <div class="character-name">
-                    Gideon Alduk
-                </div>
-
-            </div>
-
-
-            <!-- FAJAR -->
-
-            <div
-                class="character"
-                data-name="Fajar"
-                data-role="Fighter"
-                data-description="Pemain handal."
-                data-hp="70"
-                data-atk="88"
-                data-def="66"
-                data-story="Informasi karakter tidak ditemukan."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/fajar.webp">
-                </div>
-
-                <div class="character-name">
-                    Fajarjunk
-                </div>
-
-            </div>
-
-
-            <!-- RIZQON -->
-
-            <div
-                class="character"
-                data-name="Rizqon"
-                data-role="Dreamer"
-                data-description="Berpikir kritis dengan intensitas tinggi."
-                data-hp="65"
-                data-atk="100"
-                data-def="40"
-                data-story="Mempunyai kemampuan mengendalikan emosi dan pikiran."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/rizqon.webp">
-                </div>
-
-                <div class="character-name">
-                    Ganteng
-                </div>
-
-            </div>
-
-
-            <!-- SAM -->
-
-            <div
-                class="character"
-                data-name="Sam"
-                data-role="Chef"
-                data-description="Mampu mengelola berbagai macam bahan makanan menjadi hidangan lezat."
-                data-hp="100"
-                data-atk="60"
-                data-def="100"
-                data-story="Kemampuan mengolah berbagai bahan menjadi hidangan yang lezat dan menggugah selera. Dengan kreativitas, ketelitian, serta keahlian dalam memadukan rasa, ia mampu menciptakan sajian yang tidak hanya nikmat, tetapi juga memiliki cita rasa dan karakter yang khas."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/sam.webp">
-                </div>
-
-                <div class="character-name">
-                    Paman Sam
-                </div>
-
-            </div>
-
-
-            <!-- SERUMPUN -->
-
-            <div
-                class="character"
-                data-name="SERUMPUN"
-                data-role="Serumpun Brothers"
-                data-description="will u join us ?"
-                data-hp="99"
-                data-atk="99"
-                data-def="99"
-                data-story="Solid - Selaras - Swiswiswi"
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/text.webp">
-                </div>
-
-            </div>
-
-
-            <!-- KRISNA -->
-
-            <div
-                class="character"
-                data-name="Krisna"
-                data-role="Informan"
-                data-description="Memiliki kemampuan mencari informasi yang sangat akurat."
-                data-hp="100"
-                data-atk="80"
-                data-def="90"
-                data-story="Memiliki kemampuan mengumpulkan dan menyampaikan informasi dengan cepat dan akurat. Dengan kepekaan yang tinggi, kemampuan mengamati situasi, serta jaringan informasi yang luas, ia mampu menemukan fakta penting dan memberikan informasi yang tepat pada saat yang dibutuhkan."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/krisna.webp">
-                </div>
-
-                <div class="character-name">
-                    Krislaw
-                </div>
-
-            </div>
-
-
-            <!-- AKMAL -->
-
-            <div
-                class="character"
-                data-name="Akmal"
-                data-role="Fotografer"
-                data-description="Kemampuan pengambilan foto dengan akurasi tinggi."
-                data-hp="100"
-                data-atk="75"
-                data-def="100"
-                data-story="Mampu menangkap setiap momen dengan ketepatan dan kreativitas yang tinggi. Dengan kepekaan terhadap detail, pencahayaan, dan komposisi, ia mampu mengubah momen sederhana menjadi sebuah karya visual yang penuh cerita dan berkesan."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/akmal.webp">
-                </div>
-
-                <div class="character-name">
-                    Akmal Pemko
-                </div>
-
-            </div>
-
-
-            <!-- AKSAY -->
-
-            <div
-                class="character"
-                data-name="Aksay"
-                data-role="Coach"
-                data-description="Mampu membuat materi latihan sepersekian detik."
-                data-hp="100"
-                data-atk="88"
-                data-def="95"
-                data-story="Coach yang handal dalam membimbing dan mengembangkan kemampuan tim, dengan pengalaman, strategi, serta ketegasan yang mampu membentuk mental dan meningkatkan performa. Mampu memberikan arahan yang tepat, memotivasi setiap anggota, dan menjadi sosok yang dapat diandalkan dalam menghadapi berbagai tantangan."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/aksay.webp">
-                </div>
-
-                <div class="character-name">
-                    Coach Aksay
-                </div>
-
-            </div>
-
-
-            <!-- KLINTEN -->
-
-            <div
-                class="character"
-                data-name="Klinten"
-                data-role="Typologia"
-                data-description="Memiliki kemampuan mekanisme alur chatting yang sangat unik."
-                data-hp="90"
-                data-atk="70"
-                data-def="100"
-                data-story="Memiliki kemampuan unik bertahan hidup di segala medan dan kondisi, mampu beradaptasi dengan cepat dengan kondisi alam, termasuk spesies langka bukit batu."
-                >
-
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
-
-                <div class="character-image">
-                    <img src="img/klinten.webp">
-                </div>
-
-                <div class="character-name">
-                    Klintypo
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="character-info"
-            id="characterInfo"
-            >
-
-            <div
-                class="role"
-                id="role"
-                >
-                THE K-TOWN BOYS
-            </div>
-
-            <div
-                class="description"
-                id="description"
-                >
-                Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar.
-            </div>
-
-            <div class="stats">
-
-                <div class="stat">
-                    <span class="stat-title">HP</span>
-                    <span
-                        class="stat-value"
-                        id="hp"
-                        >95</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-title">ATK</span>
-                    <span
-                        class="stat-value"
-                        id="atk"
-                        >85</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-title">DEF</span>
-                    <span
-                        class="stat-value"
-                        id="def"
-                        >90</span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <button onclick="pilihKarakter()">
-            PILIH KARAKTER
-        </button>
-
-        <button onclick="showPage('home')">
-            KEMBALI
-        </button>
-
-    </section>
-
-    <!-- =========================
-             KARAKTER 2
-        ========================= -->
-
-    <section id="karakter2" class="page">
-
-        <h1>Coach</h1>
-
-        <div
-            class="character-container"
-            id="characters2"
-            >
-
-            <div
-                class="character"
-                data-name="Indra Prasetyo"
+            data-name="Indra Prasetyo"
                 data-role="Coach Andalan"
                 data-description="Sekretaris Umum Muaythai Indonesia (MI) Kota Banjarmasin."
                 data-hp="100"
                 data-atk="100"
                 data-def="100"
                 data-story="Pengelolaan organisasi, peningkatan kualitas atlet, serta program latihan lintas disiplin bela diri (seperti sparring dengan cabang olahraga lain untuk memperluas pengalaman tanding)."
-                >
 
-                <div class="character-bck">
-                    <div
-                        class="character-bg"
-                        style="background-image:url('img/laut.webp');">
-                    </div>
-                </div>
+        >
 
-                <div class="character-image">
-                    <img src="img/coach1.webp">
-                </div>
+            <div class="character-bck">
 
-                <div class="character-name">
-                    Coach Indra
+                <div
+                    class="character-bg"
+                    style="background-image:url('img/laut.webp');">
                 </div>
 
             </div>
-            
-            <div
+
+            <div class="character-image">
+
+                <img src="coach1.webp">
+
+            </div>
+
+            <div class="character-name">
+                Coach Indra
+            </div>
+
+        </div>
+<div
                 class="character"
                 data-name="Fajrin Husnu Haitami"
                 data-role="Coach Andalan"
@@ -1510,26 +1127,471 @@
             </div>
 
 
+
+
+        <!-- BOOK 2 -->
+            
+
+    </div>
+
+
+    <!-- INFO BOOK -->
+
+    <div
+        class="character-info"
+        id="bookInfo"
+    >
+
+        <div
+            class="role"
+            id="bookRole"
+        >
+            The First Book
         </div>
 
         <div
+            class="description"
+            id="bookDescription"
+        >
+            Deskripsi Book 1.
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <span class="stat-title">
+                    HP
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="bookHp"
+                >
+                    95
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span class="stat-title">
+                    ATK
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="bookAtk"
+                >
+                    85
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <span class="stat-title">
+                    DEF
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="bookDef"
+                >
+                    90
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button onclick="pilihBook()">
+        PILIH BOOK
+    </button>
+
+    <button onclick="showPage('home')">
+        KEMBALI
+    </button>
+
+</section>
+
+    <!-- KARAKTER -->
+    <section id="karakter" class="page">
+
+        <h1>Pilih Karakter</h1>
+
+
+        <div
+            class="character-container"
+            id="characters"
+            >
+
+
+            <!-- WARRIOR 111-->
+
+            <div
+                class="character active"
+
+                data-name="OMAN"
+                data-role=" THE K-TOWN BOYS"
+                data-description="Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar."
+                data-hp="95"
+                data-atk="85"
+                data-def="90"
+                data-story="Memiliki gaya bertarung yang bertolak belakang dengan bakat alami nya yang langka, selalu tampil santai seolah tidak perlu mengerahkan seluruh kemampuan nya untuk memenangkan pertarungan."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/oman.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Oman
+                </div>
+
+            </div>
+
+
+
+            <!-- RIZQON -->
+
+            <div
+                class="character"
+
+                data-name="Gideon Alduk"
+                data-role="Mage"
+                data-description="Memiliki jurus mematikan, ledakan
+                api yg membara & suka friendly fire."
+                data-hp="50"
+                data-atk="100"
+                data-def="30"
+                data-story="Ampunnya Alalak Selatan, penjagaunya Handil, p info gladiator."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/aldi.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Gideon Alduk
+                </div>
+
+            </div>
+
+
+            <!-- ARCHER -->
+
+            <div
+                class="character"
+
+                data-name="Fajar"
+                data-role="Fighter"
+                data-description="Pemain handal."
+                data-hp="70"
+                data-atk="88"
+                data-def="66"
+                data-story="Infomasi karakter tidak ditemukan."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/fajar.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Fajarjunk
+                </div>
+
+            </div>
+
+
+            <!-- ASSASSIN -->
+
+            <div
+                class="character"
+
+                data-name="Rizqon"
+                data-role="Dreamer"
+                data-description="Berpikir kritis dengan intensitas tinggi."
+                data-hp="65"
+                data-atk="100"
+                data-def="40"
+                data-story="Mempunyai kemampuan mengendalikan emosi dan pikiran."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/rizqon.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Ganteng
+                </div>
+
+            </div>
+
+
+            <!-- TANK -->
+
+            <div
+                class="character"
+
+                data-name="Sam"
+                data-role="Chef"
+                data-description="Mampu mengelola berbagai macam bahan makanan menjadi hidangan lezat."
+                data-hp="100"
+                data-atk="60"
+                data-def="100"
+                data-story="Kemampuan mengolah berbagai bahan menjadi hidangan yang lezat dan menggugah selera. Dengan kreativitas, ketelitian, serta keahlian dalam memadukan rasa, ia mampu menciptakan sajian yang tidak hanya nikmat, tetapi juga memiliki cita rasa dan karakter yang khas."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/sam.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Paman Sam
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="SERUMPUN"
+                data-role="Serumpun Brothers"
+                data-description="will u join us ?"
+                data-hp="99"
+                data-atk="99"
+                data-def="99"
+                data-story="Solid - Selaras - Swiswiswi"
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/text.webp">
+
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Krisna"
+                data-role="Informan"
+                data-description="Memiliki kemampuan mencari informasi yang sangat akurat."
+                data-hp="100"
+                data-atk="80"
+                data-def="90"
+                data-story="Memiliki kemampuan mengumpulkan dan menyampaikan informasi dengan cepat dan akurat. Dengan kepekaan yang tinggi, kemampuan mengamati situasi, serta jaringan informasi yang luas, ia mampu menemukan fakta penting dan memberikan informasi yang tepat pada saat yang dibutuhkan."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/krisna.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Krislaw
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Akmal"
+                data-role="Fotografer"
+                data-description="Kemampuan pengambilan foto dengan akurasi tinggi."
+                data-hp="100"
+                data-atk="75"
+                data-def="100"
+                data-story="Mampu menangkap setiap momen dengan ketepatan dan kreativitas yang tinggi. Dengan kepekaan terhadap detail, pencahayaan, dan komposisi, ia mampu mengubah momen sederhana menjadi sebuah karya visual yang penuh cerita dan berkesan."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/akmal.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Akmal Pemko
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Aksay"
+                data-role="Coach"
+                data-description="Mampu membuat materi latihan sepersekian detik."
+                data-hp="100"
+                data-atk="88"
+                data-def="95"
+                data-story="Coach yang handal dalam membimbing dan mengembangkan kemampuan tim, dengan pengalaman, strategi, serta ketegasan yang mampu membentuk mental dan meningkatkan performa. Mampu memberikan arahan yang tepat, memotivasi setiap anggota, dan menjadi sosok yang dapat diandalkan dalam menghadapi berbagai tantangan."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/aksay.webp">
+
+                </div>
+
+                <div class="character-name">
+                     Coach Aksay
+                </div>
+
+            </div>
+
+            <div
+                class="character"
+
+                data-name="Klinten"
+                data-role="Typologia"
+                data-description="Memiliki kemampuan mekanisme alur chatting yang sangat unik."
+                data-hp="90"
+                data-atk="70"
+                data-def="100"
+                data-story="Memiliki kemampuan unik bertahan hidup di segala medan dan kondisi, mampu beradaptasi dengan cepat dengan kondisi alam, termasuk spesies langka bukit batu."
+                >
+
+                <div class="character-bck">
+
+                    <div
+                        class="character-bg"
+                        style="background-image:url('img/laut.webp');">
+                    </div>
+
+                </div>
+                <div class="character-image">
+
+                    <img src="img/klinten.webp">
+
+                </div>
+
+                <div class="character-name">
+                    Klintypo
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+                             INFORMASI KARAKTER
+                        ========================= -->
+
+        <div
             class="character-info"
-            id="characterInfo2"
+            id="characterInfo"
             >
 
             <div
                 class="role"
-                id="role2"
+                id="role"
                 >
-                THE K-TOWN BOYS
+                Fighter
             </div>
+
 
             <div
                 class="description"
-                id="description2"
+                id="description"
                 >
-                Petarung jarak dekat dengan pertahanan kuat dan serangan fisik yang besar.
+                Petarung jarak dekat dengan pertahanan kuat
+                dan serangan fisik yang besar.
             </div>
+
 
             <div class="stats">
 
@@ -1541,7 +1603,7 @@
 
                     <span
                         class="stat-value"
-                        id="hp2"
+                        id="hp"
                         >
                         95
                     </span>
@@ -1557,7 +1619,7 @@
 
                     <span
                         class="stat-value"
-                        id="atk2"
+                        id="atk"
                         >
                         85
                     </span>
@@ -1573,7 +1635,7 @@
 
                     <span
                         class="stat-value"
-                        id="def2"
+                        id="def"
                         >
                         90
                     </span>
@@ -1585,15 +1647,17 @@
         </div>
 
 
-        <button onclick="pilihKarakter2()">
+        <button onclick="pilihKarakter()">
             PILIH KARAKTER
         </button>
-
         <button onclick="showPage('home')">
             KEMBALI
         </button>
+        <!-- pemilihan karakter kamu
+                                     dimasukkan di sini -->
 
     </section>
+
 
     <!-- LAIN-LAIN -->
     <section id="lain" class="page">
@@ -1615,8 +1679,8 @@
 
 
     <!-- =========================
-                         SEJARAH KARAKTER
-                    ========================= -->
+                 SEJARAH KARAKTER
+            ========================= -->
 
     <div
         class="story-overlay"
@@ -1658,734 +1722,856 @@
         </div>
 
     </div>
+<audio id="clickSound" src="msc/click.mp3" preload="auto"></audio>
+  <script>
+function bukaGaleri(card) {
+    playClick();
+    document.getElementById("galleryDetailTitle").textContent =
+    card.dataset.title;
 
-    <script>
+    document.getElementById("galleryDetailText").textContent =
+    card.dataset.description;
 
-        function bukaGaleri(card) {
+    document.getElementById("galleryOverlay").style.display =
+    "flex";
+}
 
-            document.getElementById("galleryDetailTitle").textContent =
-            card.dataset.title;
 
-            document.getElementById("galleryDetailText").textContent =
-            card.dataset.description;
+function tutupGaleri() {
 
-            document.getElementById("galleryOverlay").style.display =
-            "flex";
+    const gallery =
+    document.getElementById("galleryOverlay");
+
+    gallery.style.animation =
+    "storyFadeOut 0.4s ease";
+
+    setTimeout(() => {
+
+        gallery.style.display = "none";
+        gallery.style.animation =
+        "storyFade 0.4s ease";
+
+    }, 400);
+}
+
+
+function showPage(id) {
+
+    const current =
+    document.querySelector(".page.active, #intro.active");
+
+    const next =
+    document.getElementById(id);
+
+    if (!next || current === next) return;
+
+    if (current) {
+        current.classList.remove("active");
+    }
+
+    setTimeout(() => {
+
+        next.classList.add("active");
+
+        if (id === "karakter") {
+
+    centerCharacter(currentIndex, false);
+
+}
+
+    }, 500);
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+const container =
+document.getElementById("characters");
+
+let characters =
+container.querySelectorAll(".character");
+
+let currentIndex = 5;  /*mulaidri*/
+let wheelBusy = false;
+let isMovingCharacter = false;
+
+/* =========================
+   INFO
+========================= */
+
+const roleElement =
+document.getElementById("role");
+
+const descriptionElement =
+document.getElementById("description");
+
+const hpElement =
+document.getElementById("hp");
+
+const atkElement =
+document.getElementById("atk");
+
+const defElement =
+document.getElementById("def");
+
+
+function updateInfo(character) {
+
+    roleElement.textContent =
+    character.dataset.role;
+
+    descriptionElement.textContent =
+    character.dataset.description;
+
+    hpElement.textContent =
+    character.dataset.hp;
+
+    atkElement.textContent =
+    character.dataset.atk;
+
+    defElement.textContent =
+    character.dataset.def;
+
+
+    const info =
+    document.getElementById("characterInfo");
+
+    info.style.animation = "none";
+
+    info.offsetHeight;
+
+    info.style.animation =
+    "fadeInfo 0.35s ease";
+}
+
+
+/* =========================
+   CENTER
+========================= */
+
+function centerCharacter(index, smooth = true) {
+
+    if (
+        index < 0 ||
+        index >= characters.length
+    ) {
+        return;
+    }
+    if (index !== currentIndex) {
+        playClick();
+    }
+    currentIndex = index;
+    isMovingCharacter = true;
+
+    const character = characters[index];
+
+    if (!character) return;
+
+    characters.forEach(c => {
+        c.classList.remove("active");
+    });
+
+    character.classList.add("active");
+
+    updateInfo(character);
+
+    requestAnimationFrame(() => {
+
+        const containerRect =
+        container.getBoundingClientRect();
+
+        const characterRect =
+        character.getBoundingClientRect();
+
+        const containerCenter =
+        containerRect.left +
+        containerRect.width / 2;
+
+        const characterCenter =
+        characterRect.left +
+        characterRect.width / 2;
+
+        container.scrollTo({
+
+            left:
+            container.scrollLeft +
+            characterCenter -
+            containerCenter,
+
+            behavior:
+            smooth ? "smooth" : "auto"
+
+        });
+
+    });
+
+    setTimeout(() => {
+        isMovingCharacter = false;
+    }, smooth ? 350 : 0);
+}
+
+
+/* =========================
+   CARI ACTIVE
+========================= */
+
+function updateActive() {
+
+    const center =
+    container.scrollLeft +
+    container.clientWidth / 2;
+
+    let closest = null;
+    let distance = Infinity;
+
+    characters.forEach(character => {
+
+        const characterCenter =
+        character.offsetLeft +
+        character.offsetWidth / 2;
+
+        const difference =
+        Math.abs(
+            center - characterCenter
+        );
+
+        if (difference < distance) {
+
+            distance = difference;
+            closest = character;
+
+        }
+
+    });
+
+    if (!closest) return;
+
+    const current =
+    container.querySelector(".character.active");
+
+    if (current === closest) return;
+
+    if (current) {
+        current.classList.remove("active");
+    }
+
+    closest.classList.add("active");
+
+    updateInfo(closest);
+
+    currentIndex =
+    Array.from(characters).indexOf(closest);
+}
+
+
+/* =========================
+   WHEEL
+   TANPA LOOPING
+========================= */
+
+container.addEventListener(
+    "wheel",
+    function(e) {
+
+        if (
+            !document
+            .getElementById("karakter")
+            .classList
+            .contains("active")
+        ) {
+            return;
         }
 
 
-        function tutupGaleri() {
-
-            const gallery =
-            document.getElementById("galleryOverlay");
-
-            gallery.style.animation =
-            "storyFadeOut 0.4s ease";
-
-            setTimeout(() => {
-
-                gallery.style.display = "none";
-
-                gallery.style.animation =
-                "storyFade 0.4s ease";
-
-            }, 400);
+        if (
+            Math.abs(e.deltaY) <=
+            Math.abs(e.deltaX)
+        ) {
+            return;
         }
 
 
-        /* =========================
-   DUPLIKAT KARAKTER
-========================= */
-
-        const container1 =
-        document.getElementById("characters");
-
-        const container2 =
-        document.getElementById("characters2");
+        e.preventDefault();
 
 
-        /* =========================
-   CAROUSEL 1
-========================= */
+        if (wheelBusy) return;
 
-        let characters1 =
-        container1.querySelectorAll(".character");
-
-        let currentIndex1 = 5;
-
-        let wheelBusy1 = false;
-
-        let isMovingCharacter1 = false;
+        wheelBusy = true;
 
 
-        /* =========================
-   INFO 1
-========================= */
+        if (e.deltaY > 0) {
 
-        const role1 =
-        document.getElementById("role");
-
-        const description1 =
-        document.getElementById("description");
-
-        const hp1 =
-        document.getElementById("hp");
-
-        const atk1 =
-        document.getElementById("atk");
-
-        const def1 =
-        document.getElementById("def");
-
-
-        function updateInfo1(character) {
-
-            const info = document.getElementById("characterInfo");
-
-            info.style.animation = "none";
-
-            void info.offsetWidth;
-
-            role1.textContent =
-            character.dataset.role;
-
-            description1.textContent =
-            character.dataset.description;
-
-            hp1.textContent =
-            character.dataset.hp;
-
-            atk1.textContent =
-            character.dataset.atk;
-
-            def1.textContent =
-            character.dataset.def;
-
-            info.style.animation =
-            "fadeInfo 0.35s ease";
-        }
-
-
-        function centerCharacter1(index, smooth = true) {
+            /*
+               Gerak ke kanan.
+               Jika sudah karakter terakhir,
+               tidak melakukan apa-apa.
+            */
 
             if (
-                index < 0 ||
-                index >= characters1.length
+                currentIndex <
+                characters.length - 1
             ) {
-                return;
-            }
 
-            currentIndex1 = index;
-
-            isMovingCharacter1 = true;
-
-            const character =
-            characters1[index];
-
-            characters1.forEach(c => {
-                c.classList.remove("active");
-            });
-
-            character.classList.add("active");
-
-            updateInfo1(character);
-
-            requestAnimationFrame(() => {
-
-                const containerRect =
-                container1.getBoundingClientRect();
-
-                const characterRect =
-                character.getBoundingClientRect();
-
-                const containerCenter =
-                containerRect.left +
-                containerRect.width / 2;
-
-                const characterCenter =
-                characterRect.left +
-                characterRect.width / 2;
-
-                container1.scrollTo({
-
-                    left:
-                    container1.scrollLeft +
-                    characterCenter -
-                    containerCenter,
-
-                    behavior:
-                    smooth ? "smooth": "auto"
-
-                });
-
-            });
-
-            setTimeout(() => {
-
-                isMovingCharacter1 = false;
-
-            }, smooth ? 350: 0);
-        }
-
-
-        function updateActive1() {
-
-            const center =
-            container1.scrollLeft +
-            container1.clientWidth / 2;
-
-            let closest = null;
-
-            let distance = Infinity;
-
-            characters1.forEach(character => {
-
-                const characterCenter =
-                character.offsetLeft +
-                character.offsetWidth / 2;
-
-                const difference =
-                Math.abs(
-                    center -
-                    characterCenter
-                );
-
-                if (difference < distance) {
-
-                    distance = difference;
-
-                    closest = character;
-
-                }
-
-            });
-
-            if (!closest) return;
-
-            const current =
-            container1.querySelector(".character.active");
-
-            if (current === closest) return;
-
-            if (current) {
-                current.classList.remove("active");
-            }
-
-            closest.classList.add("active");
-
-            updateInfo1(closest);
-
-            currentIndex1 =
-            Array.from(characters1).indexOf(closest);
-        }
-
-
-        container1.addEventListener(
-            "wheel",
-            function(e) {
-
-                if (
-                    !document
-                    .getElementById("karakter")
-                    .classList
-                    .contains("active")
-                ) {
-                    return;
-                }
-
-                if (
-                    Math.abs(e.deltaY) <=
-                    Math.abs(e.deltaX)
-                ) {
-                    return;
-                }
-
-                e.preventDefault();
-
-                if (wheelBusy1) return;
-
-                wheelBusy1 = true;
-
-                if (e.deltaY > 0) {
-
-                    if (
-                        currentIndex1 <
-                        characters1.length - 1
-                    ) {
-
-                        centerCharacter1(
-                            currentIndex1 + 1
-                        );
-
-                    }
-
-                } else {
-
-                    if (currentIndex1 > 0) {
-
-                        centerCharacter1(
-                            currentIndex1 - 1
-                        );
-
-                    }
-
-                }
-
-                setTimeout(() => {
-
-                    wheelBusy1 = false;
-
-                }, 350);
-
-            },
-            {
-                passive: false
-            }
-        );
-
-
-        container1.addEventListener(
-            "scroll",
-            () => {
-
-                if (isMovingCharacter1) return;
-
-                requestAnimationFrame(
-                    updateActive1
+                centerCharacter(
+                    currentIndex + 1
                 );
 
             }
+
+        }
+
+        else {
+
+            /*
+               Gerak ke kiri.
+               Jika sudah karakter pertama,
+               tidak melakukan apa-apa.
+            */
+
+            if (currentIndex > 0) {
+
+                centerCharacter(
+                    currentIndex - 1
+                );
+
+            }
+
+        }
+
+
+        setTimeout(() => {
+
+            wheelBusy = false;
+
+        }, 350);
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================
+   SCROLL
+========================= */
+
+container.addEventListener(
+    "scroll",
+    () => {
+
+        if (isMovingCharacter) return;
+
+        requestAnimationFrame(
+            updateActive
+        );
+
+    }
+);
+
+
+/* =========================
+   PILIH
+========================= */
+
+function pilihKarakter() {
+
+    const active =
+    document.querySelector(
+        ".character.active"
+    );
+
+    if (!active) return;
+
+
+    document.getElementById(
+        "storyName"
+    ).textContent =
+    active.dataset.name;
+
+
+    document.getElementById(
+        "storyRole"
+    ).textContent =
+    active.dataset.role;
+
+
+    document.getElementById(
+        "storyText"
+    ).textContent =
+    active.dataset.story ||
+    "Belum ada sejarah karakter.";
+
+
+    document.getElementById(
+        "storyOverlay"
+    ).style.display =
+    "flex";
+}
+
+
+function tutupSejarah() {
+
+    const story =
+    document.getElementById(
+        "storyOverlay"
+    );
+
+    story.style.animation =
+    "storyFadeOut 0.4s ease";
+
+    setTimeout(() => {
+
+        story.style.display =
+        "none";
+
+        story.style.animation =
+        "storyFade 0.4s ease";
+
+    }, 400);
+}
+
+/* =====================================================
+   BOOK SYSTEM
+   SISTEM TERPISAH DARI KARAKTER
+===================================================== */
+
+const bookContainer =
+document.getElementById("books");
+
+let books =
+bookContainer.querySelectorAll(".character");
+
+let currentBookIndex = 0;
+
+let bookWheelBusy = false;
+let isMovingBook = false;
+
+
+/* =========================
+   INFO BOOK
+========================= */
+
+const bookRoleElement =
+document.getElementById("bookRole");
+
+const bookDescriptionElement =
+document.getElementById("bookDescription");
+
+const bookHpElement =
+document.getElementById("bookHp");
+
+const bookAtkElement =
+document.getElementById("bookAtk");
+
+const bookDefElement =
+document.getElementById("bookDef");
+
+
+function updateBookInfo(book) {
+
+    bookRoleElement.textContent =
+    book.dataset.role;
+
+    bookDescriptionElement.textContent =
+    book.dataset.description;
+
+    bookHpElement.textContent =
+    book.dataset.hp;
+
+    bookAtkElement.textContent =
+    book.dataset.atk;
+
+    bookDefElement.textContent =
+    book.dataset.def;
+
+
+    const info =
+    document.getElementById("bookInfo");
+
+    info.style.animation = "none";
+
+    info.offsetHeight;
+
+    info.style.animation =
+    "fadeInfo 0.35s ease";
+}
+
+
+/* =========================
+   CENTER BOOK
+========================= */
+
+function centerBook(index, smooth = true) {
+
+    if (
+        index < 0 ||
+        index >= books.length
+    ) {
+        return;
+    }
+
+    currentBookIndex = index;
+
+    isMovingBook = true;
+
+    const book = books[index];
+
+    if (!book) return;
+
+
+    books.forEach(b => {
+
+        b.classList.remove("active");
+
+    });
+
+
+    book.classList.add("active");
+
+    updateBookInfo(book);
+
+
+    requestAnimationFrame(() => {
+
+        const containerRect =
+        bookContainer.getBoundingClientRect();
+
+        const bookRect =
+        book.getBoundingClientRect();
+
+        const containerCenter =
+        containerRect.left +
+        containerRect.width / 2;
+
+        const bookCenter =
+        bookRect.left +
+        bookRect.width / 2;
+
+
+        bookContainer.scrollTo({
+
+            left:
+            bookContainer.scrollLeft +
+            bookCenter -
+            containerCenter,
+
+            behavior:
+            smooth ? "smooth" : "auto"
+
+        });
+
+    });
+
+
+    setTimeout(() => {
+
+        isMovingBook = false;
+
+    }, smooth ? 350 : 0);
+}
+
+
+/* =========================
+   ACTIVE BOOK
+========================= */
+
+function updateActiveBook() {
+
+    const center =
+    bookContainer.scrollLeft +
+    bookContainer.clientWidth / 2;
+
+    let closest = null;
+
+    let distance = Infinity;
+
+
+    books.forEach(book => {
+
+        const bookCenter =
+        book.offsetLeft +
+        book.offsetWidth / 2;
+
+        const difference =
+        Math.abs(
+            center - bookCenter
         );
 
 
-        /* =========================
-   CAROUSEL 2
-========================= */
+        if (difference < distance) {
 
-        let characters2 =
-        container2.querySelectorAll(".character");
+            distance = difference;
 
-        let currentIndex2 = 1;
+            closest = book;
 
-        let wheelBusy2 = false;
-
-        let isMovingCharacter2 = false;
-
-
-        /* =========================
-   INFO 2
-========================= */
-
-        const role2 =
-        document.getElementById("role2");
-
-        const description2 =
-        document.getElementById("description2");
-
-        const hp2 =
-        document.getElementById("hp2");
-
-        const atk2 =
-        document.getElementById("atk2");
-
-        const def2 =
-        document.getElementById("def2");
-
-
-        function updateInfo2(character) {
-
-            const info = document.getElementById("characterInfo2");
-
-            // Hilangkan animasi sementara
-            info.style.animation = "none";
-
-            // Paksa browser melakukan reflow
-            void info.offsetWidth;
-
-            // Isi data baru
-            role2.textContent =
-            character.dataset.role;
-
-            description2.textContent =
-            character.dataset.description;
-
-            hp2.textContent =
-            character.dataset.hp;
-
-            atk2.textContent =
-            character.dataset.atk;
-
-            def2.textContent =
-            character.dataset.def;
-
-            // Jalankan kembali animasi
-            info.style.animation =
-            "fadeInfo 0.35s ease";
         }
 
-        function centerCharacter2(index, smooth = true) {
+    });
+
+
+    if (!closest) return;
+
+
+    const current =
+    bookContainer.querySelector(
+        ".character.active"
+    );
+
+
+    if (current === closest) return;
+
+
+    if (current) {
+
+        current.classList.remove(
+            "active"
+        );
+
+    }
+
+
+    closest.classList.add(
+        "active"
+    );
+
+
+    updateBookInfo(closest);
+
+
+    currentBookIndex =
+    Array.from(books).indexOf(
+        closest
+    );
+}
+
+
+/* =========================
+   WHEEL BOOK
+========================= */
+
+bookContainer.addEventListener(
+    "wheel",
+    function(e) {
+
+        if (
+            !document
+            .getElementById("book")
+            .classList
+            .contains("active")
+        ) {
+            return;
+        }
+
+
+        if (
+            Math.abs(e.deltaY) <=
+            Math.abs(e.deltaX)
+        ) {
+            return;
+        }
+
+
+        e.preventDefault();
+
+
+        if (bookWheelBusy) return;
+
+        bookWheelBusy = true;
+
+
+        if (e.deltaY > 0) {
 
             if (
-                index < 0 ||
-                index >= characters2.length
+                currentBookIndex <
+                books.length - 1
             ) {
-                return;
-            }
 
-            currentIndex2 = index;
-
-            isMovingCharacter2 = true;
-
-            const character =
-            characters2[index];
-
-            characters2.forEach(c => {
-                c.classList.remove("active");
-            });
-
-            character.classList.add("active");
-
-            updateInfo2(character);
-
-            requestAnimationFrame(() => {
-
-                const containerRect =
-                container2.getBoundingClientRect();
-
-                const characterRect =
-                character.getBoundingClientRect();
-
-                const containerCenter =
-                containerRect.left +
-                containerRect.width / 2;
-
-                const characterCenter =
-                characterRect.left +
-                characterRect.width / 2;
-
-                container2.scrollTo({
-
-                    left:
-                    container2.scrollLeft +
-                    characterCenter -
-                    containerCenter,
-
-                    behavior:
-                    smooth ? "smooth": "auto"
-
-                });
-
-            });
-
-            setTimeout(() => {
-
-                isMovingCharacter2 = false;
-
-            }, smooth ? 350: 0);
-        }
-
-
-        function updateActive2() {
-
-            const center =
-            container2.scrollLeft +
-            container2.clientWidth / 2;
-
-            let closest = null;
-
-            let distance = Infinity;
-
-            characters2.forEach(character => {
-
-                const characterCenter =
-                character.offsetLeft +
-                character.offsetWidth / 2;
-
-                const difference =
-                Math.abs(
-                    center -
-                    characterCenter
-                );
-
-                if (difference < distance) {
-
-                    distance = difference;
-
-                    closest = character;
-
-                }
-
-            });
-
-            if (!closest) return;
-
-            const current =
-            container2.querySelector(".character.active");
-
-            if (current === closest) return;
-
-            if (current) {
-                current.classList.remove("active");
-            }
-
-            closest.classList.add("active");
-
-            updateInfo2(closest);
-
-            currentIndex2 =
-            Array.from(characters2).indexOf(closest);
-        }
-
-
-        container2.addEventListener(
-            "wheel",
-            function(e) {
-
-                if (
-                    !document
-                    .getElementById("karakter2")
-                    .classList
-                    .contains("active")
-                ) {
-                    return;
-                }
-
-                if (
-                    Math.abs(e.deltaY) <=
-                    Math.abs(e.deltaX)
-                ) {
-                    return;
-                }
-
-                e.preventDefault();
-
-                if (wheelBusy2) return;
-
-                wheelBusy2 = true;
-
-                if (e.deltaY > 0) {
-
-                    if (
-                        currentIndex2 <
-                        characters2.length - 1
-                    ) {
-
-                        centerCharacter2(
-                            currentIndex2 + 1
-                        );
-
-                    }
-
-                } else {
-
-                    if (currentIndex2 > 0) {
-
-                        centerCharacter2(
-                            currentIndex2 - 1
-                        );
-
-                    }
-
-                }
-
-                setTimeout(() => {
-
-                    wheelBusy2 = false;
-
-                }, 350);
-
-            },
-            {
-                passive: false
-            }
-        );
-
-
-        container2.addEventListener(
-            "scroll",
-            () => {
-
-                if (isMovingCharacter2) return;
-
-                requestAnimationFrame(
-                    updateActive2
+                centerBook(
+                    currentBookIndex + 1
                 );
 
             }
+
+        }
+
+        else {
+
+            if (
+                currentBookIndex > 0
+            ) {
+
+                centerBook(
+                    currentBookIndex - 1
+                );
+
+            }
+
+        }
+
+
+        setTimeout(() => {
+
+            bookWheelBusy = false;
+
+        }, 350);
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================
+   SCROLL BOOK
+========================= */
+
+bookContainer.addEventListener(
+    "scroll",
+    () => {
+
+        if (isMovingBook) return;
+
+        requestAnimationFrame(
+            updateActiveBook
         );
 
+    }
+);
 
-        /* =========================
-   PILIH KARAKTER 1
+
+/* =========================
+   PILIH BOOK
 ========================= */
 
-        function pilihKarakter() {
+function pilihBook() {
 
-            const active =
-            container1.querySelector(".character.active");
-
-            if (!active) return;
-
-            document.getElementById("storyName").textContent =
-            active.dataset.name;
-
-            document.getElementById("storyRole").textContent =
-            active.dataset.role;
-
-            document.getElementById("storyText").textContent =
-            active.dataset.story ||
-            "Belum ada sejarah karakter.";
-
-            document.getElementById("storyOverlay").style.display =
-            "flex";
-        }
+    const active =
+    bookContainer.querySelector(
+        ".character.active"
+    );
 
 
-        /* =========================
-   PILIH KARAKTER 2
+    if (!active) return;
+
+
+    /*
+       Untuk sementara memakai
+       storyOverlay yang sama.
+       Jadi tidak perlu membuat
+       overlay baru.
+    */
+
+    document.getElementById(
+        "storyName"
+    ).textContent =
+    active.dataset.name;
+
+
+    document.getElementById(
+        "storyRole"
+    ).textContent =
+    active.dataset.role;
+
+
+    document.getElementById(
+        "storyText"
+    ).textContent =
+    active.dataset.story ||
+    "Belum ada cerita Book.";
+
+
+    document.getElementById(
+        "storyOverlay"
+    ).style.display =
+    "flex";
+}
+
+
+/* =========================
+   SAAT MASUK BOOK
 ========================= */
 
-        function pilihKarakter2() {
+const oldShowPage =
+showPage;
 
-            const active =
-            container2.querySelector(".character.active");
+showPage = function(id) {
 
-            if (!active) return;
+    oldShowPage(id);
 
-            document.getElementById("storyName").textContent =
-            active.dataset.name;
+    if (id === "book") {
 
-            document.getElementById("storyRole").textContent =
-            active.dataset.role;
+        setTimeout(() => {
 
-            document.getElementById("storyText").textContent =
-            active.dataset.story ||
-            "Belum ada sejarah karakter.";
-
-            document.getElementById("storyOverlay").style.display =
-            "flex";
-        }
-
-
-        /* =========================
-   SHOW PAGE
-========================= */
-
-        function showPage(id) {
-
-            const current =
-            document.querySelector(
-                ".page.active, #intro.active"
+            centerBook(
+                currentBookIndex,
+                false
             );
 
-            const next =
-            document.getElementById(id);
+        }, 550);
 
-            if (!next || current === next) {
-                return;
-            }
+    }
 
-            if (current) {
-                current.classList.remove("active");
-            }
-
-            setTimeout(() => {
-
-                next.classList.add("active");
-
-                if (id === "karakter") {
-
-                    centerCharacter1(
-                        currentIndex1,
-                        false
-                    );
-
-                }
-
-                if (id === "karakter2") {
-
-                    centerCharacter2(
-                        currentIndex2,
-                        false
-                    );
-
-                }
-
-            },
-                500);
-        }
-
-
-        /* =========================
-   TUTUP SEJARAH
-========================= */
-
-        function tutupSejarah() {
-
-            const story =
-            document.getElementById("storyOverlay");
-
-            story.style.animation =
-            "storyFadeOut 0.4s ease";
-
-            setTimeout(() => {
-
-                story.style.display =
-                "none";
-
-                story.style.animation =
-                "storyFade 0.4s ease";
-
-            },
-                400);
-        }
-
-
-        /* =========================
+};
+/* =========================
    LOADING
 ========================= */
 
-        const dots =
-        document.getElementById("loadingDots");
+const dots =
+document.getElementById(
+    "loadingDots"
+);
 
-        let dotCount = 1;
+let dotCount = 1;
 
-        const loadingAnimation =
-        setInterval(() => {
+const loadingAnimation =
+setInterval(() => {
 
-            dotCount++;
+    dotCount++;
 
-            if (dotCount > 3) {
-                dotCount = 1;
-            }
+    if (dotCount > 3) {
+        dotCount = 1;
+    }
 
-            dots.textContent =
-            ".".repeat(dotCount);
+    dots.textContent =
+    ".".repeat(dotCount);
 
-        }, 400);
+}, 400);
 
 
-        window.addEventListener(
-            "load",
-            () => {
+window.addEventListener(
+    "load",
+    () => {
 
-                clearInterval(
-                    loadingAnimation
-                );
-
-                setTimeout(() => {
-
-                    document
-                    .getElementById("loader")
-                    .classList
-                    .add("hide");
-
-                }, 300);
-
-            }
+        clearInterval(
+            loadingAnimation
         );
 
+        setTimeout(() => {
+
+            document
+            .getElementById("loader")
+            .classList
+            .add("hide");
+
+        }, 300);
+
+    }
+);
+
+ const clickSound = document.getElementById("clickSound");
+
+        function playClick() {
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+        document.querySelectorAll("button").forEach(button => {
+            button.addEventListener("click", playClick);
+        });
     </script>
-    <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+    
 </body>
 </html>
