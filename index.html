@@ -85,27 +85,34 @@ font-family: 'Elms Sans', sans-serif;
 ========================= */
 
         .character-container {
-            width: 100%;
-            max-width: 1200px;
+    width: 100%;
+    max-width: 1200px;
 
-            overflow-x: auto;
-            overflow-y: hidden;
-            touch-action: pan-x;
-            display: flex;
-            align-items: center;
+    height: 430px;
 
-            gap: 25px;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-            padding: 110px 50% 40px;
+    touch-action: pan-x;
 
-            scroll-behavior: auto;
+    display: flex;
+    align-items: center;
 
-            scrollbar-width: none;
+    gap: 25px;
 
-            flex-shrink: 0;
-            scroll-snap-type: x mandatory;
-            scroll-padding-left: calc(50% - 20%);
-            scroll-padding-right: calc(50% - 20%);
+    padding: 110px 50% 40px;
+
+    scroll-behavior: auto;
+
+    scrollbar-width: none;
+
+    flex-shrink: 0;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-padding-left: calc(50% - 20%);
+    scroll-padding-right: calc(50% - 20%);
+
         }
 
         .character-container::-webkit-scrollbar {
@@ -298,11 +305,14 @@ font-family: 'Elms Sans', sans-serif;
         .character-info {
     width: 90%;
     max-width: 600px;
+
+    height: 130px;
+
     margin-top: 20px;
+
     text-align: center;
-    opacity: 1;
-    transform: translateY(0);
-    
+
+    flex-shrink: 0;
 }
 
 .character-info.info-animate {
