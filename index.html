@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link href="https://fonts.googleapis.com/css2?family=Lilex:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Serumpun Brothers</title>
 
     <style>
@@ -16,13 +16,14 @@
             margin: 0;
             min-height: 100vh;
 
-            background: #222;
+            background:#222;
+            
             /*
-    url("img/gallery1.jpg")center center / cover no-repeat fixed;
+    url("img/latar.webp")center center / cover no-repeat fixed;
     */
             color: white;
 
-            font-family: Arial, sans-serif;
+            font-family: "Lilex", sans-serif;
 
             display: flex;
             flex-direction: column;
@@ -915,9 +916,6 @@
             INFO
         </button>
 
-        <button class="menu-button" onclick="showPage('galeri')">
-            GALERI
-        </button>
 <button class="menu-button" onclick="showPage('book')">
     COACH
 </button>
@@ -925,6 +923,9 @@
             KARAKTER
         </button>
 
+        <button class="menu-button" onclick="showPage('galeri')">
+            GALERI
+        </button>
         <button class="menu-button" onclick="showPage('lain')">
             SOSMED
         </button>
@@ -1057,7 +1058,7 @@
 <!-- BOOK -->
 <section id="book" class="page">
 
-    <h1>Pilih Book</h1>
+    <h1>Coach</h1>
 
     <div
         class="character-container"
@@ -1089,7 +1090,7 @@
 
             <div class="character-image">
 
-                <img src="coach1.webp">
+                <img src="img/coach1.webp">
 
             </div>
 
@@ -1146,14 +1147,14 @@
             class="role"
             id="bookRole"
         >
-            The First Book
+            Coach Andalan
         </div>
 
         <div
             class="description"
             id="bookDescription"
         >
-            Deskripsi Book 1.
+            Sekretaris Umum Muaythai Indonesia (MI) Kota Banjarmasin.
         </div>
 
         <div class="stats">
@@ -1168,7 +1169,7 @@
                     class="stat-value"
                     id="bookHp"
                 >
-                    95
+                    100
                 </span>
 
             </div>
@@ -1184,7 +1185,7 @@
                     class="stat-value"
                     id="bookAtk"
                 >
-                    85
+                    100
                 </span>
 
             </div>
@@ -1200,7 +1201,7 @@
                     class="stat-value"
                     id="bookDef"
                 >
-                    90
+                    100
                 </span>
 
             </div>
@@ -1211,7 +1212,7 @@
 
 
     <button onclick="pilihBook()">
-        PILIH BOOK
+        PILIH COACH
     </button>
 
     <button onclick="showPage('home')">
@@ -1223,7 +1224,7 @@
     <!-- KARAKTER -->
     <section id="karakter" class="page">
 
-        <h1>Pilih Karakter</h1>
+        <h1>Karakter</h1>
 
 
         <div
@@ -2079,31 +2080,27 @@ container.addEventListener(
 function pilihKarakter() {
 
     const active =
-    document.querySelector(
+    container.querySelector(
         ".character.active"
     );
 
     if (!active) return;
-
 
     document.getElementById(
         "storyName"
     ).textContent =
     active.dataset.name;
 
-
     document.getElementById(
         "storyRole"
     ).textContent =
     active.dataset.role;
-
 
     document.getElementById(
         "storyText"
     ).textContent =
     active.dataset.story ||
     "Belum ada sejarah karakter.";
-
 
     document.getElementById(
         "storyOverlay"
@@ -2212,7 +2209,9 @@ function centerBook(index, smooth = true) {
     ) {
         return;
     }
-
+if (index !== currentBookIndex) {
+        playClick();
+    }
     currentBookIndex = index;
 
     isMovingBook = true;
